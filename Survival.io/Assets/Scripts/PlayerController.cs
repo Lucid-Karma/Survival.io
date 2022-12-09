@@ -33,13 +33,24 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Trigger");
             EventManager.enemyAttackAnimation.Invoke();
         }
+        if (other.gameObject.tag == "Door")
+        {
+            Debug.Log("Door Trigger Started.");
+            EventManager.doorOpening.Invoke();
+        }
     }
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log("Trigger finish.");
+        
         if (other.gameObject.tag == "Enemy")
         {
+            Debug.Log("Trigger finish.");
             EventManager.enemyMovementAnimation.Invoke();
+        }
+        if (other.gameObject.tag == "Door")
+        {
+            Debug.Log("Door Trigger Finished.");
+            EventManager.doorClosing.Invoke();
         }
     }
 }
