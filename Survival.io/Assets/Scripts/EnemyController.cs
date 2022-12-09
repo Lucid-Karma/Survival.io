@@ -4,10 +4,24 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+    [SerializeField] private Animator enemyAnimator;
+
     [SerializeField] private float moveSpeed, turnSpeed;
     [SerializeField] private Rigidbody rb;
 
     private GameObject playerGameObject;
+
+    private void OnEnable()
+    {
+        EventManager.enemyMovementAnimation.AddListener(enemyMovement);
+        EventManager.enemyAttackAnimation.AddListener(enemyAttack);
+       
+    }
+    private void OnDisable()
+    {
+        EventManager.enemyMovementAnimation.RemoveListener(enemyMovement);
+        EventManager.enemyAttackAnimation.RemoveListener(enemyAttack);
+    }
 
     private void Start()
     {
@@ -34,22 +48,12 @@ public class EnemyController : MonoBehaviour
         rb.MovePosition(transform.position + (transform.forward * moveSpeed * Time.deltaTime));
     }
 
-
-
-    private void OnTriggerEnter(Collider other)
+    private void enemyAttack()
     {
-        if (other.gameObject.tag == "Player")
-        {
-            Debug.Log("Trigger");
-            EventManager.enemyAttackAnimation.Invoke();
-        }
+        enemyAnimator.SetBool("isAttack",true);
     }
-    private void OnTriggerExit(Collider other)
+    private void enemyMovement() 
     {
-        Debug.Log("Trigger finish.");
-        if (other.gameObject.tag == "Player")
-        {
-            EventManager.enemyMovementAnimation.Invoke();
-        }
+        enemyAnimator.SetBool("isAttack", false);
     }
 }
