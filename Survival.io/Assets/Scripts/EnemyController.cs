@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    [SerializeField] private Animator enemyAnimator;
+    State currentState;
+
+    public MovementState movementState = new MovementState();
+    public AttackState attackState = new AttackState();
+
+    public Animator enemyAnimator;
 
     [SerializeField] private float moveSpeed, turnSpeed;
     [SerializeField] private Rigidbody rb;
@@ -13,14 +18,12 @@ public class EnemyController : MonoBehaviour
 
     private void OnEnable()
     {
-        EventManager.enemyMovementAnimation.AddListener(enemyMovement);
-        EventManager.enemyAttackAnimation.AddListener(enemyAttack);
+        EventManager.OnPlayerInteract.AddListener(StartState);
        
     }
     private void OnDisable()
     {
-        EventManager.enemyMovementAnimation.RemoveListener(enemyMovement);
-        EventManager.enemyAttackAnimation.RemoveListener(enemyAttack);
+        EventManager.OnPlayerInteract.RemoveListener(StartState);
     }
 
     private void Start()
@@ -55,5 +58,17 @@ public class EnemyController : MonoBehaviour
     private void enemyMovement() 
     {
         enemyAnimator.SetBool("isAttack", false);
+    }
+
+    public void StartState()
+    {
+        currentState = movementState;
+        currentState.EnterState(this);
+    }
+
+    public void SwitchState(State state)
+    {
+        currentState = state;
+        state.EnterState(this);
     }
 }

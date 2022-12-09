@@ -31,15 +31,7 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.tag == "Enemy")
         {
             Debug.Log("Trigger");
-            EventManager.enemyAttackAnimation.Invoke();
-        }
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        Debug.Log("Trigger finish.");
-        if (other.gameObject.tag == "Enemy")
-        {
-            EventManager.enemyMovementAnimation.Invoke();
+            EventManager.OnPlayerInteract.Invoke();
         }
     }
 }

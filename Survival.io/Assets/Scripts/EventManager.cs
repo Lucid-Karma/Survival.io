@@ -8,4 +8,6 @@ public class EventManager : MonoBehaviour
     public static UnityEvent enemyMovementAnimation = new UnityEvent();
     public static UnityEvent enemyAttackAnimation = new UnityEvent();
 
+    public static UnityEvent OnPlayerInteract = new UnityEvent();
+
 }
