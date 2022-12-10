@@ -28,10 +28,12 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Enemy")
+        if (other.gameObject.CompareTag("Enemy"))
         {
             Debug.Log("Trigger");
-            EventManager.enemyAttackAnimation.Invoke();
+            //EventManager.enemyAttackAnimation.Invoke();
+            EnemySpawner.SharedInstance.enemyAttack(other);
+            
         }
     }
     private void OnTriggerExit(Collider other)
@@ -39,7 +41,8 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Trigger finish.");
         if (other.gameObject.tag == "Enemy")
         {
-            EventManager.enemyMovementAnimation.Invoke();
+            //EventManager.enemyMovementAnimation.Invoke();
+            EnemySpawner.SharedInstance.enemyMovement(other);
         }
     }
 }

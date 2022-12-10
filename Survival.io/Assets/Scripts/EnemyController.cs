@@ -4,14 +4,19 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    [SerializeField] private Animator enemyAnimator;
+    /*[SerializeField]*/ private Animator enemyAnimator;
 
     [SerializeField] private float moveSpeed, turnSpeed;
     [SerializeField] private Rigidbody rb;
 
     private GameObject playerGameObject;
 
-    private void OnEnable()
+    void Awake()
+    {
+        enemyAnimator = this.GetComponent<Animator>();
+    }
+
+    /*private void OnEnable()
     {
         EventManager.enemyMovementAnimation.AddListener(enemyMovement);
         EventManager.enemyAttackAnimation.AddListener(enemyAttack);
@@ -21,7 +26,7 @@ public class EnemyController : MonoBehaviour
     {
         EventManager.enemyMovementAnimation.RemoveListener(enemyMovement);
         EventManager.enemyAttackAnimation.RemoveListener(enemyAttack);
-    }
+    }*/
 
     private void Start()
     {
@@ -48,12 +53,21 @@ public class EnemyController : MonoBehaviour
         rb.MovePosition(transform.position + (transform.forward * moveSpeed * Time.deltaTime));
     }
 
-    private void enemyAttack()
+    /*private void enemyAttack()
     {
         enemyAnimator.SetBool("isAttack",true);
     }
     private void enemyMovement() 
     {
         enemyAnimator.SetBool("isAttack", false);
+    }*/
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Bullet")
+        {
+            EnemySpawner.SharedInstance.ManageEnemy();
+            EnemySpawner.SharedInstance.GetEnemy();
+        }
     }
 }
