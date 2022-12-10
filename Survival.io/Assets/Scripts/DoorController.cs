@@ -2,17 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using System;
 
 public class DoorController : MonoBehaviour
 {
     // [SerializeField] private GameObject ParentDoorObject;
-    public int doorId;
 
     private void OnEnable()
     {
         EventManager.doorOpening.AddListener(moveUp);
         EventManager.doorClosing.AddListener(moveDown);
     }
+
     private void OnDisable()
     {
         EventManager.doorOpening.RemoveListener(moveUp);
