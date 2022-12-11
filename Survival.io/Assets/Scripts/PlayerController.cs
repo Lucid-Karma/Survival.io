@@ -25,30 +25,4 @@ public class PlayerController : MonoBehaviour
         }
         
     }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Enemy")
-        {
-            Debug.Log("Enemy Attack");
-            EventManager.enemyAttackAnimation.Invoke();
-        }
-        if (other.gameObject.tag == "Door")
-        {
-            EventManager.doorOpening.Invoke();
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.tag == "Enemy")
-        {
-            Debug.Log("Enemy Movement");
-            EventManager.enemyMovementAnimation.Invoke();
-        }
-        if (other.gameObject.tag == "Door")
-        {
-            EventManager.doorClosing.Invoke();
-        }
-    }
 }

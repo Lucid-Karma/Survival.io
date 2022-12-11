@@ -6,26 +6,36 @@ using System;
 
 public class DoorController : MonoBehaviour
 {
-    // [SerializeField] private GameObject ParentDoorObject;
+    public static DoorController instance;
 
-    private void OnEnable()
+    private void Awake()
     {
-        EventManager.doorOpening.AddListener(moveUp);
-        EventManager.doorClosing.AddListener(moveDown);
+        if (instance == null) instance = this;
     }
 
-    private void OnDisable()
+    private void OnTriggerEnter(Collider other)
     {
-        EventManager.doorOpening.RemoveListener(moveUp);
-        EventManager.doorClosing.RemoveListener(moveDown);
+        if (other.gameObject.tag == "Player")
+        {
+            moveUp();
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            moveDown();
+        }
     }
 
-    private void moveUp()
+    public void moveUp()
     {
         transform.DOLocalMoveY(4.3f, .5f).SetEase(Ease.OutQuad);
+        Debug.Log("Move up");
     }
-    private void moveDown()
+    public void moveDown()
     {
         transform.DOLocalMoveY(1.4f, .5f).SetEase(Ease.InQuad);
+        Debug.Log("Move down");
     }
 }

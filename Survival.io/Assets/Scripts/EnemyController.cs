@@ -29,21 +29,25 @@ public class EnemyController : MonoBehaviour
         moveEnemy();
     }
 
-    private void OnEnable()
-    {
-        EventManager.enemyMovementAnimation.AddListener(enemyMovement);
-        EventManager.enemyAttackAnimation.AddListener(enemyAttack);
-
-    }
-    private void OnDisable()
-    {
-        EventManager.enemyMovementAnimation.RemoveListener(enemyMovement);
-        EventManager.enemyAttackAnimation.RemoveListener(enemyAttack);
-    }
-
     private void moveEnemy(/*Vector3 direction*/)   // Enemy straight move by rotation 
     {
         rb.MovePosition(transform.position + (transform.forward * moveSpeed * Time.deltaTime));
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject == playerGameObject)
+        {
+            enemyAttack();
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject == playerGameObject)
+        {
+            enemyMovement();
+        }
     }
 
     private void enemyAttack()
