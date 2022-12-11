@@ -16,8 +16,8 @@ public class EnemyController : MonoBehaviour
     }
     void Update()
     {
-        /*Vector3 cameraDirection = canvasTransform.position - cam.transform.position;
-        canvasTransform.rotation = Quaternion.LookRotation(cameraDirection);    // Enemy damage text lookRotation to every frame*/
+        /Vector3 cameraDirection = canvasTransform.position - cam.transform.position;
+        canvasTransform.rotation = Quaternion.LookRotation(cameraDirection);    // Enemy damage text lookRotation to every frame/
 
         Vector3 direction = (playerGameObject.transform.position - transform.position).normalized;
         Quaternion rotationGoal = Quaternion.LookRotation(new Vector3(direction.x,0f,direction.z));
@@ -29,7 +29,7 @@ public class EnemyController : MonoBehaviour
         moveEnemy();
     }
 
-    private void moveEnemy(/*Vector3 direction*/)   // Enemy straight move by rotation 
+    private void moveEnemy(/Vector3 direction/)   // Enemy straight move by rotation 
     {
         rb.MovePosition(transform.position + (transform.forward * moveSpeed * Time.deltaTime));
     }
