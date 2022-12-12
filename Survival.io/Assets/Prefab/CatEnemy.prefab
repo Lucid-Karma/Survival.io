@@ -1847,6 +1847,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9412c2663e2652947ab296498959fdf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyAnimator: {fileID: 3879966696721102828}
   moveSpeed: 2
   turnSpeed: 0.04
   rb: {fileID: 7149541322172788201}
