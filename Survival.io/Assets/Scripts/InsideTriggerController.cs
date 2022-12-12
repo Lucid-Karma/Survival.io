@@ -5,6 +5,7 @@ using UnityEngine;
 public class InsideTriggerController : MonoBehaviour
 {
     private GameObject playerGameobject;
+    [SerializeField] private Collider playerCollider;
     
     private void Start()
     {
@@ -15,15 +16,14 @@ public class InsideTriggerController : MonoBehaviour
         if (other.gameObject == playerGameobject)
         {
             Debug.Log("Player içeride.");
-            
+            playerCollider.isTrigger = true;
         }
     }
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject == playerGameobject)
         {
-            Debug.Log("Player dýþarýda.");
-            
+            playerCollider.isTrigger = false;
         }
     }
 }
