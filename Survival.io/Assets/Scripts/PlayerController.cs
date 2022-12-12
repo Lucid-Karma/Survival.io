@@ -1,14 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Rigidbody), typeof(CapsuleCollider))]
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Rigidbody rigidBody;
     [SerializeField] private FixedJoystick joystick;
-    [SerializeField] private Animator animator;
+    // [SerializeField] private Animator animator;
     [SerializeField] private float moveSpeed;
+
+    AnimationController animationController;
+
+    private bool OutSide = true;
+
+    private void Start()
+    {
+        animationController = GetComponent<AnimationController>();
+    }
 
     private void FixedUpdate()
     {
@@ -17,12 +27,30 @@ public class PlayerController : MonoBehaviour
         if (joystick.Horizontal != 0 || joystick.Vertical != 0)
         {
             transform.rotation = Quaternion.LookRotation(rigidBody.velocity);
-            animator.SetBool("isRunning", true);
+
+            if (OutSide) animationController.OutRunningAnimation();
+            else animationController.InRunningAnimation();
         }
         else
         {
-            animator.SetBool("isRunning", false);
+            if (OutSide) animationController.OutIdleAnimation();
+            else animationController.InIdleAnimation();
         }
         
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Inside")
+        {
+            OutSide = false;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Inside")
+        {
+            OutSide = true;
+        }
     }
 }
