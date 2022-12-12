@@ -7,6 +7,7 @@ using System;
 public class DoorController : MonoBehaviour
 {
     public static DoorController instance;
+    [SerializeField] private Collider playerCollider;
 
     private void Awake()
     {
@@ -18,6 +19,7 @@ public class DoorController : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             moveUp();
+            playerCollider.isTrigger = true;
         }
     }
     private void OnTriggerExit(Collider other)
@@ -25,17 +27,18 @@ public class DoorController : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             moveDown();
+            playerCollider.isTrigger = false;
         }
     }
 
     public void moveUp()
     {
-        transform.DOLocalMoveY(4.3f, .5f).SetEase(Ease.OutQuad);
+        transform.parent.DOLocalMoveY(4.3f, .5f).SetEase(Ease.OutQuad);
         Debug.Log("Move up");
     }
     public void moveDown()
     {
-        transform.DOLocalMoveY(1.4f, .5f).SetEase(Ease.InQuad);
+        transform.parent.DOLocalMoveY(1.4f, .5f).SetEase(Ease.InQuad);
         Debug.Log("Move down");
     }
 }
