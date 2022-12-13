@@ -4,34 +4,50 @@ using UnityEngine;
 
 public class AnimationController : MonoBehaviour
 {
-    [SerializeField] private Animator animator;
+    /*private Animator animator;
+    public Animator Animator { get { return (animator == null) ? animator = GetComponent<Animator>() : animator; } }
+
+    void OnEnable()
+    {
+        EventManager.OnCharacterOutRunning.AddListener(OutRunningAnimation);
+        EventManager.OnCharacterOutIdle.AddListener(OutIdleAnimation);
+        EventManager.OnCharacterInRunning.AddListener(InRunningAnimation);
+        EventManager.OnCharacterInIdle.AddListener(InIdleAnimation);
+    }
+    void OnDisable()
+    {
+        EventManager.OnCharacterOutRunning.RemoveListener(OutRunningAnimation);
+        EventManager.OnCharacterOutIdle.RemoveListener(OutIdleAnimation);
+        EventManager.OnCharacterInRunning.RemoveListener(InRunningAnimation);
+        EventManager.OnCharacterInIdle.RemoveListener(InIdleAnimation);
+    }
     
     public void OutRunningAnimation()
     {
-        animator.SetBool("isOutRunning", true);
-        animator.SetBool("isOutIdle", false);
-        animator.SetBool("isInRunning", false);
-        animator.SetBool("isInIdle", false);
+        Animator.SetBool("isOutRunning", true);
+        Animator.SetBool("isOutIdle", false);
+        Animator.SetBool("isInRunning", false);
+        Animator.SetBool("isInIdle", false);
     }
     public void OutIdleAnimation()
     {
-        animator.SetBool("isOutIdle", true);
-        animator.SetBool("isOutRunning", false);
-        animator.SetBool("isInRunning", false);
-        animator.SetBool("isInIdle", false);
+        Animator.SetBool("isOutIdle", true);
+        Animator.SetBool("isOutRunning", false);
+        Animator.SetBool("isInRunning", false);
+        Animator.SetBool("isInIdle", false);
     }
     public void InRunningAnimation()
     {
-        animator.SetBool("isOutIdle", false);
-        animator.SetBool("isOutRunning", false);
-        animator.SetBool("isInRunning", true);
-        animator.SetBool("isInIdle", false);
+        Animator.SetBool("isOutIdle", false);
+        Animator.SetBool("isOutRunning", false);
+        Animator.SetBool("isInRunning", true);
+        Animator.SetBool("isInIdle", false);
     }
     public void InIdleAnimation()
     {
-        animator.SetBool("isOutIdle", false);
-        animator.SetBool("isOutRunning", false);
-        animator.SetBool("isInRunning", false);
-        animator.SetBool("isInIdle", true);
-    }
+        Animator.SetBool("isOutIdle", false);
+        Animator.SetBool("isOutRunning", false);
+        Animator.SetBool("isInRunning", false);
+        Animator.SetBool("isInIdle", true);
+    }*/
 }

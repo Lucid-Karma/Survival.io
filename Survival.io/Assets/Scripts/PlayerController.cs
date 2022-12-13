@@ -3,38 +3,64 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+public enum ExecutingState
+{
+    OUTRUN,
+    OUTIDLE,
+    INRUN,
+    INIDLE
+}
+
 [RequireComponent(typeof(Rigidbody), typeof(CapsuleCollider))]
 public class PlayerController : MonoBehaviour
 {
+    PlayerStates currentState;
+
+    public OutRunningState outRunningState = new OutRunningState();
+    public OutIdleState outIdleState = new OutIdleState();
+    public InRunningState inRunningState = new InRunningState();
+    public InIdleState inIdleState = new InIdleState();
+
+    public ExecutingState executingState;
+
+
+
     [SerializeField] private Rigidbody rigidBody;
-    [SerializeField] private FixedJoystick joystick;
-    // [SerializeField] private Animator animator;
+    public FixedJoystick joystick;
+    public Animator animator;
     [SerializeField] private float moveSpeed;
 
-    AnimationController animationController;
+    //AnimationController animationController;
 
-    private bool OutSide = true;
+    public bool OutSide = true;
 
     private void Start()
     {
-        animationController = GetComponent<AnimationController>();
+        //animationController = GetComponent<AnimationController>();
+
+        currentState = outIdleState;
     }
 
     private void FixedUpdate()
     {
         rigidBody.velocity = new Vector3(joystick.Horizontal * moveSpeed, rigidBody.velocity.y, joystick.Vertical * moveSpeed);
 
+        currentState.UpdateState(this);
+
         if (joystick.Horizontal != 0 || joystick.Vertical != 0)
         {
             transform.rotation = Quaternion.LookRotation(rigidBody.velocity);
 
-            if (OutSide) animationController.OutRunningAnimation();
-            else animationController.InRunningAnimation();
+            if (OutSide)    executingState = ExecutingState.OUTRUN;
+            else    
+            {
+                executingState = ExecutingState.INRUN;
+            }
         }
         else
         {
-            if (OutSide) animationController.OutIdleAnimation();
-            else animationController.InIdleAnimation();
+            if (OutSide)    executingState = ExecutingState.OUTIDLE;
+            else    executingState = ExecutingState.INIDLE;
         }
         
     }
@@ -45,6 +71,10 @@ public class PlayerController : MonoBehaviour
         {
             OutSide = false;
         }
+        if (other.gameObject.CompareTag("Coin"))
+        {
+            CoinSpawner.SharedInstance.ManageCoins();
+        }
     }
     private void OnTriggerExit(Collider other)
     {
@@ -52,5 +82,11 @@ public class PlayerController : MonoBehaviour
         {
             OutSide = true;
         }
+    }
+
+    public void SwitchState(PlayerStates nextState)
+    {
+        currentState = nextState;
+        currentState.EnterState(this);
     }
 }
