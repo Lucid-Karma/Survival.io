@@ -10,11 +10,14 @@ public class EnemySpawner : MonoBehaviour
     public GameObject objectToPool;
     public int amountToPool;
 
+    [SerializeField] private float enemyCreateTime;
+
     private Vector3 createPos;
     private Vector3 offset;
     private int targetEnemyCount;
     private int[] enemyPosX;
     private int[] enemyPosZ;
+    private float timer;
 
     void Awake() 
     {
@@ -30,7 +33,25 @@ public class EnemySpawner : MonoBehaviour
 
     void Start()
     {
-        GetEnemyFirstTime();
+        // GetEnemyFirstTime();
+    }
+
+    private void FixedUpdate() // 0.02 sn de bir frame çalýþýyor.
+    {
+        if (timer >= enemyCreateTime)
+        {
+            timer = 0f;
+
+            GameObject runEnemyClone = GetPooledObject();
+
+            if (runEnemyClone != null)
+            {
+                Debug.Log("New enemy Created.");
+                runEnemyClone.transform.position = GetEnemyPosition();
+                runEnemyClone.SetActive(true);
+            }
+        }
+        else timer += 0.02f;
     }
 
     public void GetEnemyFirstTime()
@@ -62,33 +83,16 @@ public class EnemySpawner : MonoBehaviour
         return null;
     }
 
-    private int count;
-    public void GetEnemy()   
-    {
-        //count = 2;
-        createPos = GetEnemyPosition();
-        //for (int i = 0; i < count; i++)
-        //{
-            GameObject enemy = GetPooledObject();
-
-            if(enemy != null)
-            {
-                enemy.transform.position = createPos;
-                enemy.SetActive(true);
-            }
-        //}
-    }
-
     public Vector3 GetEnemyPosition()
     {
         
-        int x = Random.Range(-10, 10);
-        int z = Random.Range(-10, 10);
+        int x = Random.Range(-5, 14);
+        int z = Random.Range(-14, 10);
         offset = new Vector3(x, 0, z);
         return offset;
     }
 
-    public void ManageEnemy()   
+    /*public void ManageEnemy()   
     {
         for (int i = 0; i < pooledObjects.Count; i++)
         {
@@ -102,19 +106,5 @@ public class EnemySpawner : MonoBehaviour
     public void DisposeEnemy(int enemyObject)
     {
         pooledObjects[enemyObject].SetActive(false);
-    }
-
-
-    /*private Animator enemyAnimator;
-
-    public void enemyAttack(Collider enemyCollider)
-    {
-        enemyAnimator = enemyCollider.GetComponent<Animator>();
-        enemyAnimator.SetBool("isAttack",true);
-    }
-    public void enemyMovement(Collider enemyCollider)
-    {
-        enemyAnimator = enemyCollider.GetComponent<Animator>();
-        enemyAnimator.SetBool("isAttack",false);
     }*/
 }

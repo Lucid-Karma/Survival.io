@@ -8,6 +8,7 @@ public class DoorController : MonoBehaviour
 {
     public static DoorController instance;
     [SerializeField] private Collider playerCollider;
+    [SerializeField] private GameObject doorLeft, doorRight;
 
     private void Awake()
     {
@@ -33,10 +34,12 @@ public class DoorController : MonoBehaviour
 
     public void moveUp()
     {
-        transform.parent.DOLocalMoveY(4.3f, .5f).SetEase(Ease.OutQuad);
+        doorLeft.transform.DOLocalMoveZ(-1.4f, .5f).SetEase(Ease.OutQuad);
+        doorRight.transform.DOLocalMoveZ(1.4f, .5f).SetEase(Ease.OutQuad);
     }
     public void moveDown()
     {
-        transform.parent.DOLocalMoveY(1.4f, .5f).SetEase(Ease.InQuad);
+        doorLeft.transform.DOLocalMoveZ(-0.5f, .5f).SetEase(Ease.OutQuad);
+        doorRight.transform.DOLocalMoveZ(0.5f, .5f).SetEase(Ease.OutQuad);
     }
 }

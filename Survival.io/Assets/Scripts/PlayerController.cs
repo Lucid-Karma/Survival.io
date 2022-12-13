@@ -52,10 +52,8 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.LookRotation(rigidBody.velocity);
 
             if (OutSide)    executingState = ExecutingState.OUTRUN;
-            else    
-            {
-                executingState = ExecutingState.INRUN;
-            }
+            else    executingState = ExecutingState.INRUN;
+
         }
         else
         {
