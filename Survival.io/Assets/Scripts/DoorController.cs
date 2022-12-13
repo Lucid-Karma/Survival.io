@@ -34,11 +34,9 @@ public class DoorController : MonoBehaviour
     public void moveUp()
     {
         transform.parent.DOLocalMoveY(4.3f, .5f).SetEase(Ease.OutQuad);
-        Debug.Log("Move up");
     }
     public void moveDown()
     {
         transform.parent.DOLocalMoveY(1.4f, .5f).SetEase(Ease.InQuad);
-        Debug.Log("Move down");
     }
 }

@@ -1849,6 +1849,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 2
   turnSpeed: 0.04
+  enemyAnimator: {fileID: 3879966696721102828}
   rb: {fileID: 7149541322172788201}
 --- !u!1 &7700190502893691656
 GameObject:

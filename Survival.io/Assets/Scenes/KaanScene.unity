@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1832,7 +1832,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &457004568
 Transform:
   m_ObjectHideFlags: 0
@@ -3866,6 +3866,69 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9117172639434151735, guid: c1f2f45e2afe7954c8bba1da0b5559ae, type: 3}
   m_PrefabInstance: {fileID: 808544941}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &824084989
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 824084991}
+  - component: {fileID: 824084990}
+  - component: {fileID: 824084992}
+  m_Layer: 0
+  m_Name: SpawnerObj
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &824084990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 824084989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2984e8b7c87038e45b9ca9f22a31d0c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pooledObjects: []
+  objectToPool: {fileID: 7526523638689150764, guid: 6270f932fcd629d42bd3da6f971db981, type: 3}
+  amountToPool: 30
+--- !u!4 &824084991
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 824084989}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &824084992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 824084989}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79dc47064dc24834fa2efa76c2d62c91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pooledObjects: []
+  objectToPool: {fileID: 8943639133052090839, guid: fae1c42208c5ee942aea2558be99927d, type: 3}
+  amountToPool: 12
 --- !u!1 &844798471 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8488551482764971405, guid: c1f2f45e2afe7954c8bba1da0b5559ae, type: 3}
@@ -9434,11 +9497,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2045346050 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5182029510642923800, guid: 4de26e3502efb2846b13da8141d19ac8, type: 3}
-  m_PrefabInstance: {fileID: 3100256521979630623}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2057433075
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10161,24 +10219,6 @@ CapsuleCollider:
   m_CorrespondingSourceObject: {fileID: 7848673006327524617, guid: 4de26e3502efb2846b13da8141d19ac8, type: 3}
   m_PrefabInstance: {fileID: 3100256521979630623}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &7469156414312232899 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 1891995742340119000, guid: 4de26e3502efb2846b13da8141d19ac8, type: 3}
-  m_PrefabInstance: {fileID: 3100256521979630623}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &7469156414312232900
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2045346050}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0645464b72ba2b3418b5b9907def1f9e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 7469156414312232899}
 --- !u!4 &7576553999686149310 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7149541322172788118, guid: 6270f932fcd629d42bd3da6f971db981, type: 3}
