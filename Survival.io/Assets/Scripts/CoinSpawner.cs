@@ -14,8 +14,6 @@ public class CoinSpawner : MonoBehaviour
     private Vector3 createPos;
     private Vector3 offset;
     private int targetCoinCount;
-    private int[] coinPosX;
-    private int[] coinPosZ;
 
 
     void Awake() 
@@ -58,19 +56,18 @@ public class CoinSpawner : MonoBehaviour
                 coin.transform.position = createPos;
                 coin.SetActive(true);
             }
-        
     }
 
     public Vector3 GetCoinPosition()
     {
         
-        int x = Random.Range(-25, 25);
-        int z = Random.Range(-25, 25);
+        int x = Random.Range(-5, 3);
+        int z = Random.Range(-10, 6);
         offset = new Vector3(x, 1, z);
         return offset;
     }
 
-    public void ManageCoins()   
+    /*public void ManageCoins(Collider coinCollider)   
     {
         for (int i = 0; i < pooledObjects.Count; i++)
         {
@@ -84,12 +81,13 @@ public class CoinSpawner : MonoBehaviour
     public void DisposeCoin(int coinObject)
     {
         pooledObjects[coinObject].SetActive(false);
-    }
+    }*/
 
-    public void DisposeOnTrigger(Collider coinCollider)
+    /*public void DisposeOnTrigger(Collider coinCollider)
     {
         coinCollider.gameObject.SetActive(false);
-    }
+        GetCoin();
+    }*/
 
     public void GetCoinFirstTime()   
     {
