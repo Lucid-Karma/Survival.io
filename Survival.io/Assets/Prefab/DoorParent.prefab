@@ -59,8 +59,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCollider: {fileID: 0}
-  doorLeft: {fileID: 0}
-  doorRight: {fileID: 0}
+  doorLeft: {fileID: 4830396699521713656}
+  doorRight: {fileID: 7625190086288512033}
 --- !u!1 &4161462448708285054
 GameObject:
   m_ObjectHideFlags: 0

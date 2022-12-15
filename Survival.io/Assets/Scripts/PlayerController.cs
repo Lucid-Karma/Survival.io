@@ -14,6 +14,8 @@ public enum ExecutingState
 [RequireComponent(typeof(Rigidbody), typeof(CapsuleCollider))]
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController instance;
+
     PlayerStates currentState;
 
     public OutRunningState outRunningState = new OutRunningState();
@@ -33,6 +35,11 @@ public class PlayerController : MonoBehaviour
     //AnimationController animationController;
 
     public bool OutSide = true;
+
+    private void Awake()
+    {
+        if (instance == null) instance = this;
+    }
 
     private void Start()
     {
