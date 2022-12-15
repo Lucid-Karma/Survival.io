@@ -36,7 +36,7 @@ public class EnemySpawner : MonoBehaviour
         // GetEnemyFirstTime();
     }
 
-    private void FixedUpdate() // 0.02 sn de bir frame çalýþýyor.
+    private void FixedUpdate() // 0.02 sn de bir frame ï¿½alï¿½ï¿½ï¿½yor.
     {
         if (timer >= enemyCreateTime)
         {
@@ -46,7 +46,6 @@ public class EnemySpawner : MonoBehaviour
 
             if (runEnemyClone != null)
             {
-                Debug.Log("New enemy Created.");
                 runEnemyClone.transform.position = GetEnemyPosition();
                 runEnemyClone.SetActive(true);
             }
