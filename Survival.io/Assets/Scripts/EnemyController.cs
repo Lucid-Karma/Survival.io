@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed, turnSpeed;
     [SerializeField] private Animator enemyAnimator;
     [SerializeField] private Rigidbody rb;
+    [SerializeField] private float moveSpeed, turnSpeed, attackDamage;
+
+    private bool attackDamageBool = false;
 
     private GameObject playerGameObject;
 
@@ -27,6 +29,11 @@ public class EnemyController : MonoBehaviour
     private void FixedUpdate()
     {
         moveEnemy();
+
+        if (attackDamageBool)
+        {
+            PlayerHealthController.instance.currentHealth -= attackDamage;
+        }
     }
 
     private void moveEnemy(/*Vector3 direction*/)   // Enemy straight move by rotation 
@@ -36,6 +43,8 @@ public class EnemyController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        IDamageable damageable = other.GetComponent<IDamageable>();
+
         if (other.gameObject == playerGameObject)
         {
             enemyAttack();
@@ -53,9 +62,11 @@ public class EnemyController : MonoBehaviour
     private void enemyAttack()
     {
         enemyAnimator.SetBool("isAttack", true);
+        attackDamageBool = true;
     }
     private void enemyMovement()
     {
         enemyAnimator.SetBool("isAttack", false);
+        attackDamageBool = false;
     }
 }

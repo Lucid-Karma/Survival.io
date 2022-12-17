@@ -2,19 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealthController : MonoBehaviour, IDamageable
+public class EnemyHealthController : MonoBehaviour
 {
-    public int maxHealth;
-    private int currentHealth;
+    public float maxHealth;
+    private float currentHealth;
 
     void Start()
     {
         ResetHealth();
     }
 
-    public void Damage()
+    /*public void Damage(float damage)
     {
-        currentHealth--;
+        currentHealth -= damage;
 
         if (currentHealth <= 0)
         {
@@ -22,8 +22,7 @@ public class HealthController : MonoBehaviour, IDamageable
             currentHealth = 0;
         }
         Debug.Log(currentHealth);
-    }
-
+    }*/
     private void ResetHealth()
     {
         currentHealth = maxHealth;
