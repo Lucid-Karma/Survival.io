@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/KaanScene.unity
+    path: Assets/[GAME]/Scenes/KaanScene.unity
     guid: fe4f3aef510621f4a847c60e7c49ddde
   m_configObjects: {}

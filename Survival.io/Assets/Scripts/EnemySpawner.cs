@@ -15,8 +15,6 @@ public class EnemySpawner : MonoBehaviour
     private Vector3 createPos;
     private Vector3 offset;
     private int targetEnemyCount;
-    private int[] enemyPosX;
-    private int[] enemyPosZ;
     private float timer;
 
     void Awake() 
@@ -48,6 +46,7 @@ public class EnemySpawner : MonoBehaviour
             {
                 runEnemyClone.transform.position = GetEnemyPosition();
                 runEnemyClone.SetActive(true);
+                Debug.Log("cCc");
             }
         }
         else timer += 0.02f;
