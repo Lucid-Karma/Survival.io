@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        IDamageable damageable = other.GetComponent<IDamageable>();
+        //IDamageable damageable = other.GetComponent<IDamageable>();
         ICollectable collectable = other.GetComponent<ICollectable>();
 
         if (other.gameObject.tag == "Inside")
@@ -83,8 +83,8 @@ public class PlayerController : MonoBehaviour
         {
             CoinSpawner.SharedInstance.DisposeOnTrigger(other);
         }*/
-        if (damageable != null)
-            damageable.Damage();
+        //if (damageable != null)
+          //  damageable.Damage();
         if(collectable != null)
             collectable.Collect();
     }
