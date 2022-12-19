@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyHealthController : MonoBehaviour
+public class EnemyHealthController : MonoBehaviour, IDamageable
 {
-    public float maxHealth;
+    public float maxHealth, recoil;
     private float currentHealth;
 
     void Start()
@@ -12,17 +12,11 @@ public class EnemyHealthController : MonoBehaviour
         ResetHealth();
     }
 
-    /*public void Damage(float damage)
+    public void Damage()
     {
-        currentHealth -= damage;
+        transform.position -= transform.forward * recoil;
+    }
 
-        if (currentHealth <= 0)
-        {
-            //Character.KillCharacter();
-            currentHealth = 0;
-        }
-        Debug.Log(currentHealth);
-    }*/
     private void ResetHealth()
     {
         currentHealth = maxHealth;

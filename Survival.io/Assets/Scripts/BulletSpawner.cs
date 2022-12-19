@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletSpawner : MonoBehaviour, IDamageable
+public class BulletSpawner : MonoBehaviour
 {
     public static BulletSpawner SharedInstance;
 
@@ -10,10 +10,7 @@ public class BulletSpawner : MonoBehaviour, IDamageable
     public GameObject objectToPool;
     public int amountToPool;
 
-
     private Vector3 createPos;
-    private Vector3 offset;
-    private int targetBulletCount;
 
     private float timer;
 
@@ -27,28 +24,26 @@ public class BulletSpawner : MonoBehaviour, IDamageable
             obj.SetActive(false); 
             pooledObjects.Add(obj);
         }
-
-        timer = 0;
     }
 
     void FixedUpdate()
     {
-        // if(timer >= 0.1f)
-        // {
-        //     GetBullet();
-        //     timer = 0;
-        // }
-
-        // timer += 0.02f;
-
-        if(timer >= 1f)
+        if (timer >= 0.04f)
         {
-            GetBullet();            //runs every second.
-
-            timer = 0f;
-            Debug.Log("bbb");
+            GetBullet();
+            timer = 0;
         }
+
         timer += 0.02f;
+
+        /* if(timer >= 1f)
+         {
+             GetBullet();            //runs every second.
+
+             timer = 0f;
+             Debug.Log("bbb");
+         }
+         timer += 0.02f;*/
     }
 
     public GameObject GetPooledObject() 
@@ -67,7 +62,7 @@ public class BulletSpawner : MonoBehaviour, IDamageable
     public void GetBullet()   
     {
         createPos = GetBulletPosition();
-            GameObject bullet = GetPooledObject();
+        GameObject bullet = GetPooledObject();
 
             if(bullet != null)
             {
@@ -75,45 +70,10 @@ public class BulletSpawner : MonoBehaviour, IDamageable
                 bullet.transform.rotation = transform.parent.rotation;
                 bullet.SetActive(true);
             }
-
-            DisposeBullet();
     }
 
     public Vector3 GetBulletPosition()
     {
         return gameObject.transform.position;
-    }
-
-    private void DisposeBullet()
-    {
-        for (int i = 0; i < pooledObjects.Count; i++)
-        {
-            if (pooledObjects[i].activeInHierarchy)
-            {
-                StartCoroutine(WaitBeforeBulletDispose(i));
-            }
-        }
-    }
-
-    IEnumerator WaitBeforeBulletDispose(int bullet)
-    {
-        yield return new WaitForSeconds(1f);
-        pooledObjects[bullet].SetActive(false);
-    }
-
-    private void DisposeOnTrigger()
-    {
-        for (int i = 0; i < pooledObjects.Count; i++)
-        {
-            if (pooledObjects[i].activeInHierarchy)
-            {
-                pooledObjects[i].SetActive(false);
-            }
-        }
-    }
-
-    public void Damage()
-    {
-        DisposeOnTrigger();
     }
 }

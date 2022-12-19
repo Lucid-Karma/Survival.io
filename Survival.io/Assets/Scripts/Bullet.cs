@@ -5,21 +5,18 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] private float bulletSpeed;
-    private Rigidbody rb;
 
-    void Awake()
-    {
-        rb = gameObject.GetComponent<Rigidbody>();
-    }
+    private bool activatedControl = true;
 
     void FixedUpdate()
     {
-        //BulletSpawner.SharedInstance.GetBullet();
-        //rb.AddForce(transform.forward * bulletSpeed * Time.fixedDeltaTime, ForceMode.Impulse);
-        //rb.velocity = transform.forward * bulletSpeed;
         transform.position += transform.forward * bulletSpeed * Time.fixedDeltaTime;
 
-        //transform.Rotate(0, PlayerController.instance.transform.rotation.y, 0, Space.World);
+        if (activatedControl)
+        {
+            activatedControl = false;
+            StartCoroutine(DisposeBullet());
+        }
     }
 
     void OnTriggerEnter(Collider other)
@@ -29,6 +26,18 @@ public class Bullet : MonoBehaviour
         if(damageable != null)
         {
             damageable.Damage();
+            gameObject.SetActive(false);
         }
+    }
+    IEnumerator DisposeBullet()
+    {
+        yield return new WaitForSeconds(1f);
+
+        if (gameObject.activeInHierarchy)
+        {
+            gameObject.SetActive(false);
+        }
+
+        activatedControl = true;
     }
 }
