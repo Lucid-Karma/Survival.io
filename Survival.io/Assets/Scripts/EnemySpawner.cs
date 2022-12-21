@@ -16,6 +16,7 @@ public class EnemySpawner : MonoBehaviour
     private Vector3 offset;
     private int targetEnemyCount;
     private float timer;
+    private int judge;
 
     void Awake() 
     {
@@ -27,11 +28,6 @@ public class EnemySpawner : MonoBehaviour
             obj.SetActive(false); 
             pooledObjects.Add(obj);
         }
-    }
-
-    void Start()
-    {
-        // GetEnemyFirstTime();
     }
 
     private void FixedUpdate() // 0.02 sn de bir frame �al���yor.
@@ -46,26 +42,10 @@ public class EnemySpawner : MonoBehaviour
             {
                 runEnemyClone.transform.position = GetEnemyPosition();
                 runEnemyClone.SetActive(true);
-                Debug.Log("cCc");
+                Debug.Log(runEnemyClone.name + " " + runEnemyClone.transform.position);
             }
         }
         else timer += 0.02f;
-    }
-
-    public void GetEnemyFirstTime()
-    {
-        targetEnemyCount = Random.Range(15, 25);
-        for (int i = 0; i < targetEnemyCount; i++)
-        {
-            createPos = GetEnemyPosition();
-            GameObject enemy = GetPooledObject();
-
-            if(enemy != null)
-            {
-                enemy.transform.position = createPos;
-                enemy.SetActive(true);
-            }
-        }  
     }
 
     public GameObject GetPooledObject() 
@@ -81,28 +61,32 @@ public class EnemySpawner : MonoBehaviour
         return null;
     }
 
+    private bool control = true;
     public Vector3 GetEnemyPosition()
     {
+           // Exclude range 15, -15. Within 24, -24.
         
-        int x = Random.Range(-5, 14);
-        int z = Random.Range(-14, 10);
-        offset = new Vector3(x, 0, z);
-        return offset;
-    }
+            judge = Random.Range(-24, -7/*31-7=24*/);
 
-    /*public void ManageEnemy()   
-    {
-        for (int i = 0; i < pooledObjects.Count; i++)
-        {
-            if (pooledObjects[i].activeInHierarchy)
+            if (judge > -16/*31-15=16*/)
             {
-                DisposeEnemy(i);
+                judge += 31;
             }
-        }
-    }
+        
 
-    public void DisposeEnemy(int enemyObject)
-    {
-        pooledObjects[enemyObject].SetActive(false);
-    }*/
+        int r = Random.Range(-24, 24);
+
+            if (control)
+            {
+                offset = new Vector3(judge, 0, r); 
+                control = false;       
+                return offset;
+            }
+            else //if(!control)
+            {
+                offset = new Vector3(r, 0, judge);  
+                control = true;      
+                return offset;
+            }
+    }
 }
