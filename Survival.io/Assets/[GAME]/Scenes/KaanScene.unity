@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -8261,6 +8261,53 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 7.5, y: 4, z: 0.36}
   m_Center: {x: 0, y: 2, z: 0}
+--- !u!1 &1819782734
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1819782735}
+  - component: {fileID: 1819782736}
+  m_Layer: 0
+  m_Name: GunList
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1819782735
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1819782734}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 543450653550541752}
+  m_Father: {fileID: 7469156414312232893}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1819782736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1819782734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b85fe7e287ac97c4fa403e89ffe2ead6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gunList:
+  - {fileID: 919132149345755394}
 --- !u!1 &1820984372
 GameObject:
   m_ObjectHideFlags: 0
@@ -9648,7 +9695,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132149345755394}
   m_LocalRotation: {x: -0.00634622, y: -0.06725502, z: 0.09372865, w: 0.9933033}
-  m_LocalPosition: {x: 0.142, y: 1.221, z: 0.324}
+  m_LocalPosition: {x: 0.1420002, y: 1.221, z: 0.324}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9658,8 +9705,8 @@ Transform:
   - {fileID: 8539708938926404974}
   - {fileID: 2238042363169683117}
   - {fileID: 1583417366}
-  m_Father: {fileID: 7469156414312232893}
-  m_RootOrder: 3
+  m_Father: {fileID: 1819782735}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -7.747, z: 10.781}
 --- !u!1 &919132148816634422
 GameObject:
