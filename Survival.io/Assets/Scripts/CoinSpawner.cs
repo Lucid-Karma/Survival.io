@@ -14,6 +14,8 @@ public class CoinSpawner : MonoBehaviour
     private Vector3 createPos;
     private Vector3 offset;
     private int targetCoinCount;
+    private int judge;
+    private bool control = true;
 
 
     void Awake() 
@@ -58,36 +60,32 @@ public class CoinSpawner : MonoBehaviour
             }
     }
 
+
     public Vector3 GetCoinPosition()
     {
-        
-        int x = Random.Range(-5, 3);
-        int z = Random.Range(-10, 6);
-        offset = new Vector3(x, 1, z);
-        return offset;
-    }
+        judge = Random.Range(-24, -7/*31-7=24*/);
 
-    /*public void ManageCoins(Collider coinCollider)   
-    {
-        for (int i = 0; i < pooledObjects.Count; i++)
-        {
-            if (pooledObjects[i].activeInHierarchy)
+            if (judge > -16/*31-15=16*/)
             {
-                DisposeCoin(i);
+                judge += 31;
             }
-        }
+        
+
+        int r = Random.Range(-24, 24);
+
+            if (control)
+            {
+                offset = new Vector3(judge, 1, r); 
+                control = false;       
+                return offset;
+            }
+            else //if(!control)
+            {
+                offset = new Vector3(r, 1, judge);  
+                control = true;      
+                return offset;
+            }
     }
-
-    public void DisposeCoin(int coinObject)
-    {
-        pooledObjects[coinObject].SetActive(false);
-    }*/
-
-    /*public void DisposeOnTrigger(Collider coinCollider)
-    {
-        coinCollider.gameObject.SetActive(false);
-        GetCoin();
-    }*/
 
     public void GetCoinFirstTime()   
     {
