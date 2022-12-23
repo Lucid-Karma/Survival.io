@@ -12,4 +12,5 @@ public class EventManager : MonoBehaviour
     public static UnityEvent OnCharacterInRunning = new UnityEvent();
     public static UnityEvent OnCharacterOutIdle = new UnityEvent();
     public static UnityEvent OnCharacterInIdle = new UnityEvent();
+    public static UnityEvent OnEnemyDying = new UnityEvent();
 }

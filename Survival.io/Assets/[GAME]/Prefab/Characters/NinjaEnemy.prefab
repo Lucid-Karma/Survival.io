@@ -776,6 +776,7 @@ MonoBehaviour:
   moveSpeed: 2
   turnSpeed: 0.04
   attackDamage: 0.2
+  attackDamageBool: 0
 --- !u!114 &7539116121438439656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -788,8 +789,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 127e6c555e8ae4b45858cf9259215058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 5
-  recoil: 1
+  maxHealth: 10
+  currentHealth: 10
+  recoil: 0.2
 --- !u!1 &4276588468308416157
 GameObject:
   m_ObjectHideFlags: 0

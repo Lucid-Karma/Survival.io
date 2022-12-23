@@ -4,14 +4,20 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+    public static EnemyController instance;
+
     [SerializeField] private Animator enemyAnimator;
     [SerializeField] private Rigidbody rb;
     [SerializeField] private float moveSpeed, turnSpeed, attackDamage;
 
-    private bool attackDamageBool = false;
+    [HideInInspector] public bool attackDamageBool = false;
 
     private GameObject playerGameObject;
 
+    private void Awake()
+    {
+        instance = this;
+    }
     private void Start()
     {
         playerGameObject = GameObject.FindGameObjectWithTag("Player");
@@ -43,8 +49,6 @@ public class EnemyController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        IDamageable damageable = other.GetComponent<IDamageable>();
-
         if (other.gameObject == playerGameObject)
         {
             enemyAttack();
@@ -57,6 +61,16 @@ public class EnemyController : MonoBehaviour
         {
             enemyMovement();
         }
+    }
+
+    private void OnEnable()
+    {
+        // EventManager.OnEnemyDying.AddListener(enemyMovement);
+    }
+    private void OnDisable()
+    {
+        // EventManager.OnEnemyDying.RemoveListener(enemyMovement);
+        attackDamageBool = false;
     }
 
     private void enemyAttack()

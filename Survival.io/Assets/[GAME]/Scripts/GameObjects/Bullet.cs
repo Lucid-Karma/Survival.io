@@ -6,17 +6,17 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] private float bulletSpeed;
 
-    private bool activatedControl = true;
+    // private bool activatedControl = true;
 
     void FixedUpdate()
     {
         transform.position += transform.forward * bulletSpeed * Time.fixedDeltaTime;
 
-        if (activatedControl)
+        /*if (activatedControl)
         {
             activatedControl = false;
             StartCoroutine(DisposeBullet());
-        }
+        }*/
     }
 
     void OnTriggerEnter(Collider other)
@@ -28,8 +28,10 @@ public class Bullet : MonoBehaviour
             damageable.Damage();
             gameObject.SetActive(false);
         }
+        
+        gameObject.SetActive(false);
     }
-    IEnumerator DisposeBullet()
+   /* IEnumerator DisposeBullet()
     {
         yield return new WaitForSeconds(1f);
 
@@ -39,5 +41,5 @@ public class Bullet : MonoBehaviour
         }
 
         activatedControl = true;
-    }
+    }*/
 }

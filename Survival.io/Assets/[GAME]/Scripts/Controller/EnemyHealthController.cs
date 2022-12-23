@@ -4,17 +4,29 @@ using UnityEngine;
 
 public class EnemyHealthController : MonoBehaviour, IDamageable
 {
-    public float maxHealth, recoil;
-    private float currentHealth;
+    public static EnemyHealthController instance;
 
-    void Start()
+    public float maxHealth, currentHealth, recoil;
+
+    private void Awake()
     {
-        ResetHealth();
+        instance = this;
     }
 
     public void Damage()
     {
         transform.position -= transform.forward * recoil;
+        currentHealth -= 1;
+
+        if (currentHealth <= 0)
+        {
+            // EventManager.OnEnemyDying.Invoke();
+
+            Debug.Log("Enemy Dead !");
+
+            gameObject.SetActive(false);
+            ResetHealth();
+        }
     }
 
     private void ResetHealth()

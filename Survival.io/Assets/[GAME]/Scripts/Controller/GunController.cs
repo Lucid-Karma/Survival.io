@@ -6,20 +6,18 @@ using DG.Tweening;
 public class GunController : MonoBehaviour
 {
     public List<GameObject> gunList = new List<GameObject>();
-    private GameObject tempGun;
+    private GameObject activeGun;
+
+    private void Start()
+    {
+        activeGun = gunList[0];
+    }
 
     private void Update()
     {
         if (!PlayerController.instance.OutSide)
         {
-            for (int i = 0; i < gunList.Count; i++)
-            {
-                if (gunList[i].activeInHierarchy)
-                {
-                    tempGun = gunList[i];
-                    tempGun.SetActive(false);
-                }
-            }
+            activeGun.SetActive(false);
         }
         else
         {
@@ -29,6 +27,6 @@ public class GunController : MonoBehaviour
     IEnumerator GunActivatedTime()
     {
         yield return new WaitForSeconds(.15f);
-        tempGun.SetActive(true);
+        activeGun.SetActive(true);
     }
 }
