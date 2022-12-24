@@ -7,6 +7,7 @@ public class EnemyHealthController : MonoBehaviour, IDamageable
     public static EnemyHealthController instance;
 
     public float maxHealth, currentHealth, recoil;
+    [SerializeField] private GameObject coinObject;
 
     private void Awake()
     {
@@ -20,11 +21,14 @@ public class EnemyHealthController : MonoBehaviour, IDamageable
 
         if (currentHealth <= 0)
         {
-            // EventManager.OnEnemyDying.Invoke();
+            Instantiate(coinObject, new Vector3(transform.position.x,coinObject.transform.position.y,transform.position.z), transform.rotation);
+
+            //CoinSpawner.SharedInstance.GetCoin(transform.position);
 
             Debug.Log("Enemy Dead !");
 
             gameObject.SetActive(false);
+
             ResetHealth();
         }
     }

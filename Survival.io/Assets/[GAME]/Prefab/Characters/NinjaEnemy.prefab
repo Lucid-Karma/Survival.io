@@ -792,6 +792,7 @@ MonoBehaviour:
   maxHealth: 10
   currentHealth: 10
   recoil: 0.2
+  coinObject: {fileID: 6128904298678483890, guid: efa3f090f42cc4a4b88386f106faec46, type: 3}
 --- !u!1 &4276588468308416157
 GameObject:
   m_ObjectHideFlags: 0

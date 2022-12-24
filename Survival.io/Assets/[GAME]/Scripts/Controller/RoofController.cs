@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RoofAnimationController : MonoBehaviour
+public class RoofController : MonoBehaviour
 {
     [SerializeField] private Animator animator;
 
@@ -17,6 +17,22 @@ public class RoofAnimationController : MonoBehaviour
             roofOpening();
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            PlayerController.instance.OutSide = false;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            PlayerController.instance.OutSide = true;
+        }
+    }
+
 
     private void roofOpening()
     {

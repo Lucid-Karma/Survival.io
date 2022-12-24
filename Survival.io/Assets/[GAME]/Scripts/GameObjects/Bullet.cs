@@ -28,8 +28,11 @@ public class Bullet : MonoBehaviour
             damageable.Damage();
             gameObject.SetActive(false);
         }
-        
-        gameObject.SetActive(false);
+
+        if (other.gameObject.tag != "CoinDetector")
+        {
+            gameObject.SetActive(false);
+        }
     }
    /* IEnumerator DisposeBullet()
     {

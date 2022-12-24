@@ -32,7 +32,7 @@ public class CoinSpawner : MonoBehaviour
 
     void Start()
     {
-        GetCoinFirstTime();
+        // GetCoinFirstTime();
     }
 
     public GameObject GetPooledObject() 
@@ -48,16 +48,17 @@ public class CoinSpawner : MonoBehaviour
         return null;
     }
 
-    public void GetCoin()   
+    public void GetCoin(Vector3 createPos)   
     {
-        createPos = GetCoinPosition();
-            GameObject coin = GetPooledObject();
+        // createPos = GetCoinPosition();
+        GameObject coin = GetPooledObject();
 
-            if(coin != null)
-            {
-                coin.transform.position = createPos;
-                coin.SetActive(true);
-            }
+        if(coin != null)
+        {
+            coin.transform.position = createPos;
+            createPos.y += 1;
+            coin.SetActive(true);
+        }
     }
 
 
