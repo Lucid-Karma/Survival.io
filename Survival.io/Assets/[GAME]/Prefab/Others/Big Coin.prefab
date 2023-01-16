@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 6793096542349173000}
   - component: {fileID: 7631972738766679725}
   - component: {fileID: 5624645795827931751}
-  - component: {fileID: 3494501643303981218}
+  - component: {fileID: -2771703806521401569}
   - component: {fileID: 2778772299654284230}
   - component: {fileID: -9009001209830060910}
   m_Layer: 0
-  m_Name: Coin1
-  m_TagString: Coin
+  m_Name: Big Coin
+  m_TagString: BigCoin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 6128904298678483890}
   m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
   m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 150, y: 150, z: 150}
+  m_LocalScale: {x: 300, y: 300, z: 300}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -86,7 +86,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &3494501643303981218
+--- !u!114 &-2771703806521401569
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

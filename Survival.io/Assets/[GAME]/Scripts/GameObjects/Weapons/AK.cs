@@ -6,7 +6,7 @@ public class AK : BaseBulletSpawner
 {
     public override void Start()
     {
-        speed = 0.07f;
+        speedTime = 0.07f;
         damage = 2;
     }
 }

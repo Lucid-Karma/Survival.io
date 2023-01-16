@@ -10,10 +10,10 @@ public class CoinSpawner : MonoBehaviour
     public GameObject objectToPool;
     public int amountToPool;
 
+    [SerializeField] private int targetCoinCount;
 
     private Vector3 createPos;
     private Vector3 offset;
-    private int targetCoinCount;
     private int judge;
     private bool control = true;
 
@@ -32,7 +32,7 @@ public class CoinSpawner : MonoBehaviour
 
     void Start()
     {
-        // GetCoinFirstTime();
+        GetCoinFirstTime();
     }
 
     public GameObject GetPooledObject() 
@@ -48,9 +48,9 @@ public class CoinSpawner : MonoBehaviour
         return null;
     }
 
-    public void GetCoin(Vector3 createPos)   
+    public void GetCoin()   
     {
-        // createPos = GetCoinPosition();
+        createPos = GetCoinPosition();
         GameObject coin = GetPooledObject();
 
         if(coin != null)
@@ -90,7 +90,6 @@ public class CoinSpawner : MonoBehaviour
 
     public void GetCoinFirstTime()   
     {
-        targetCoinCount = Random.Range(4, 10);
         for (int i = 0; i < targetCoinCount; i++)
         {
             createPos = GetCoinPosition();

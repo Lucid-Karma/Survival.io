@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class Coin : MonoBehaviour, ICollectable
+public class BigCoin : MonoBehaviour, ICollectable
 {
     [HideInInspector] public Transform playerTransform;
     public float moveSpeed;
@@ -21,9 +21,10 @@ public class Coin : MonoBehaviour, ICollectable
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("CoinDetector"))
+        if (other.gameObject.tag == "Player")
         {
-            coinMoveScript.enabled = true;
+            gameObject.SetActive(false);
+            CoinSpawner.SharedInstance.GetCoin();
         }
     }
 
@@ -32,7 +33,10 @@ public class Coin : MonoBehaviour, ICollectable
         // gameObject.SetActive(false);
         // CoinSpawner.SharedInstance.GetCoin();
         coinMoveScript.enabled = true;
-        Debug.Log("Take Coin");
+    }
 
+    private void OnDisable()
+    {
+        coinMoveScript.enabled = false;
     }
 }

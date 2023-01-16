@@ -6,7 +6,7 @@ public class Pistol : BaseBulletSpawner
 {
     public override void Start()
     {
-        speed = 0.5f;
+        speedTime = 0.5f;
         damage = 1;
     }
 }

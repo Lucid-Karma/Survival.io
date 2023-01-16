@@ -6,7 +6,7 @@ public abstract class BaseBulletSpawner : MonoBehaviour
 {
     public static BaseBulletSpawner SharedInstance;
 
-    public float speed;
+    public float speedTime;
     public int damage;
 
     public List<GameObject> pooledObjects = new List<GameObject>();
@@ -34,7 +34,7 @@ public abstract class BaseBulletSpawner : MonoBehaviour
 
     public void FixedUpdate()
     {
-        if (timer >= speed)
+        if (timer >= speedTime)
         {
             GetBullet();
             timer = 0;

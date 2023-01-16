@@ -6,7 +6,7 @@ public class MP5 : BaseBulletSpawner
 {
     public override void Start()
     {
-        speed = 0.04f;
+        speedTime = 0.04f;
         damage = 1;
     }
 }

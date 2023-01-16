@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     public static PlayerController instance;
 
     PlayerStates currentState;
+    CoinMove coinMoveScript;
 
     public OutRunningState outRunningState = new OutRunningState();
     public OutIdleState outIdleState = new OutIdleState();
@@ -46,6 +47,7 @@ public class PlayerController : MonoBehaviour
         //animationController = GetComponent<AnimationController>();
 
         currentState = outIdleState;
+        coinMoveScript = GetComponent<CoinMove>();
     }
 
     private void FixedUpdate()
@@ -74,7 +76,7 @@ public class PlayerController : MonoBehaviour
     {
         ICollectable collectable = other.GetComponent<ICollectable>();
 
-        if(collectable != null)
+        if (collectable != null)
             collectable.Collect();
     }
 

@@ -6,6 +6,7 @@ public class CoinMove : MonoBehaviour
 {
     Coin coinScript;
     CoinMove coinMoveScript;
+
     void Start()
     {
         coinScript = GetComponent<Coin>();
@@ -20,9 +21,18 @@ public class CoinMove : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.CompareTag("Player"))
         {
-            gameObject.SetActive(false);
+            if (gameObject.CompareTag("Coin"))
+            {
+                Destroy(gameObject);
+            }
+            else if (gameObject.CompareTag("BigCoin"))
+            {
+                coinMoveScript.enabled = false;
+                gameObject.SetActive(false);
+                CoinSpawner.SharedInstance.GetCoin();
+            }
         }
     }
 }
