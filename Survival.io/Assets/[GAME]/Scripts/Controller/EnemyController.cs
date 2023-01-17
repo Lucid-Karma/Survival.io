@@ -8,6 +8,7 @@ public class EnemyController : MonoBehaviour
 
     [SerializeField] private Animator enemyAnimator;
     [SerializeField] private Rigidbody rb;
+    [SerializeField] private Collider enemyCollider;
     [SerializeField] private float moveSpeed, turnSpeed, attackDamage;
 
     [HideInInspector] public bool attackDamageBool = false;
@@ -53,6 +54,10 @@ public class EnemyController : MonoBehaviour
         {
             enemyAttack();
         }
+        if (other.gameObject.CompareTag("Fence"))
+        {
+            enemyCollider.isTrigger = true;
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -60,6 +65,11 @@ public class EnemyController : MonoBehaviour
         if (other.gameObject == playerGameObject)
         {
             enemyMovement();
+        }
+
+        if (other.gameObject.CompareTag("Fence"))
+        {
+            enemyCollider.isTrigger = false;
         }
     }
 

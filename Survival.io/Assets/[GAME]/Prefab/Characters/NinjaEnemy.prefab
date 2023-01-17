@@ -773,6 +773,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyAnimator: {fileID: 7491066941288074508}
   rb: {fileID: -1597190466508655218}
+  enemyCollider: {fileID: 7962784171362751811}
   moveSpeed: 2
   turnSpeed: 0.04
   attackDamage: 0.2

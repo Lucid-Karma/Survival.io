@@ -11,6 +11,7 @@ TagManager:
   - BigCoin
   - Coin
   - MainPlayer
+  - Fence
   layers:
   - Default
   - TransparentFX

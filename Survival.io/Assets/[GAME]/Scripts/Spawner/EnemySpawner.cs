@@ -42,7 +42,7 @@ public class EnemySpawner : MonoBehaviour
             {
                 runEnemyClone.transform.position = GetEnemyPosition();
                 runEnemyClone.SetActive(true);
-                // Debug.Log(runEnemyClone.name + " " + runEnemyClone.transform.position);
+                Debug.Log(runEnemyClone.name + " " + runEnemyClone.transform.position);
             }
         }
         else timer += 0.02f;
@@ -64,17 +64,17 @@ public class EnemySpawner : MonoBehaviour
     private bool control = true;
     public Vector3 GetEnemyPosition()
     {
-           // Exclude range 15, -15. Within 24, -24.
+           // Exclude range 27, -27. Within 30, -30.
         
-            judge = Random.Range(-24, -7/*31-7=24*/);
+            judge = Random.Range(-30, -24/*31-7=24*/);
 
-            if (judge > -16/*31-15=16*/)
+            if (judge > -27/*31-15=16*/)
             {
-                judge += 31;
+                judge += 54;
             }
         
 
-        int r = Random.Range(-24, 24);
+        int r = Random.Range(-30, 30);
 
             if (control)
             {
