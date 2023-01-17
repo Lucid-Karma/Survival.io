@@ -7,7 +7,7 @@ public abstract class BaseBulletSpawner : MonoBehaviour
     public static BaseBulletSpawner SharedInstance;
 
     public float speedTime;
-    public int damage;
+    public float damage;
 
     public List<GameObject> pooledObjects = new List<GameObject>();
     public GameObject objectToPool;

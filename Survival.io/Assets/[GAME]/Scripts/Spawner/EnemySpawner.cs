@@ -42,7 +42,7 @@ public class EnemySpawner : MonoBehaviour
             {
                 runEnemyClone.transform.position = GetEnemyPosition();
                 runEnemyClone.SetActive(true);
-                Debug.Log(runEnemyClone.name + " " + runEnemyClone.transform.position);
+                // Debug.Log(runEnemyClone.name + " " + runEnemyClone.transform.position);
             }
         }
         else timer += 0.02f;

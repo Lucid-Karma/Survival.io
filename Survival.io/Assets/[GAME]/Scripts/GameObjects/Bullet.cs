@@ -34,15 +34,4 @@ public class Bullet : MonoBehaviour
             gameObject.SetActive(false);
         }
     }
-   /* IEnumerator DisposeBullet()
-    {
-        yield return new WaitForSeconds(1f);
-
-        if (gameObject.activeInHierarchy)
-        {
-            gameObject.SetActive(false);
-        }
-
-        activatedControl = true;
-    }*/
 }
