@@ -4,35 +4,28 @@ using UnityEngine;
 
 public class CoinMove : MonoBehaviour
 {
+    [HideInInspector] public Transform playerTransform;
     Coin coinScript;
-    CoinMove coinMoveScript;
 
     void Start()
     {
+        playerTransform = GameObject.FindGameObjectWithTag("Player").transform; // Bir objeyi referans g�stermeden direkt ba�laman�n yolu
         coinScript = GetComponent<Coin>();
-        coinMoveScript = GetComponent<CoinMove>();
     }
     void Update()
     {
-        Vector3 playerNewTransform = coinScript.playerTransform.position;
+        Vector3 playerNewTransform = playerTransform.position;
         playerNewTransform.y += 1f;
 
         transform.position = Vector3.MoveTowards(transform.position, playerNewTransform, coinScript.moveSpeed * Time.deltaTime);
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            if (gameObject.CompareTag("Coin"))
-            {
-                Destroy(gameObject);
-            }
-            else if (gameObject.CompareTag("BigCoin"))
-            {
-                coinMoveScript.enabled = false;
-                gameObject.SetActive(false);
-                CoinSpawner.SharedInstance.GetCoin();
-            }
+            this.enabled = false;
+            gameObject.SetActive(false);
         }
     }
 }

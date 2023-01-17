@@ -6,9 +6,10 @@ public class CoinSpawner : MonoBehaviour
 {
     public static CoinSpawner SharedInstance;
 
-    public List<GameObject> pooledObjects = new List<GameObject>();
-    public GameObject objectToPool;
-    public int amountToPool;
+    public List<GameObject> smallPooledObjects = new List<GameObject>();
+    public List<GameObject> bigPooledObjects = new List<GameObject>();
+    public GameObject[] objectToPool;
+    public int amountToPool, amountToPoolBigCoin;
 
     [SerializeField] private int targetCoinCount;
 
@@ -24,34 +25,64 @@ public class CoinSpawner : MonoBehaviour
 
         for (int i = 0; i < amountToPool; i++) 
         {
-            GameObject obj = (GameObject)Instantiate(objectToPool);
+            GameObject obj = (GameObject)Instantiate(objectToPool[0]);
             obj.SetActive(false); 
-            pooledObjects.Add(obj);
+            smallPooledObjects.Add(obj);
+        }
+
+        for (int j = 0; j < amountToPoolBigCoin; j++) 
+        {
+            GameObject Bobj = (GameObject)Instantiate(objectToPool[1]);  // ?????
+            Bobj.SetActive(false); 
+            bigPooledObjects.Add(Bobj);
         }
     }
 
     void Start()
     {
-        GetCoinFirstTime();
+        GetBigCoinFirstTime();
     }
 
-    public GameObject GetPooledObject() 
+    public GameObject GetSmallPooledObject() 
     {
-        for (int i = 0; i < pooledObjects.Count; i++) 
+        for (int i = 0; i < smallPooledObjects.Count; i++) 
         {
-            if (!pooledObjects[i].activeInHierarchy) 
+            if (!smallPooledObjects[i].activeInHierarchy) 
             {
-                return pooledObjects[i];
+                return smallPooledObjects[i];
+            }
+        }
+        
+        return null;
+    }
+    public GameObject GetBigPooledObject() 
+    {
+        for (int i = 0; i < bigPooledObjects.Count; i++) 
+        {
+            if (!bigPooledObjects[i].activeInHierarchy) 
+            {
+                return bigPooledObjects[i];
             }
         }
         
         return null;
     }
 
-    public void GetCoin()   
+    public void GetSmallCoin(Vector3 pos)   
+    {
+        GameObject coin = GetSmallPooledObject();
+
+        if(coin != null)
+        {
+            coin.transform.position = pos;
+            pos.y += 1;
+            coin.SetActive(true);
+        }
+    }
+    public void GetBigCoin()   
     {
         createPos = GetCoinPosition();
-        GameObject coin = GetPooledObject();
+        GameObject coin = GetBigPooledObject();
 
         if(coin != null)
         {
@@ -88,12 +119,12 @@ public class CoinSpawner : MonoBehaviour
             }
     }
 
-    public void GetCoinFirstTime()   
+    public void GetBigCoinFirstTime()   
     {
         for (int i = 0; i < targetCoinCount; i++)
         {
             createPos = GetCoinPosition();
-            GameObject coin = GetPooledObject();
+            GameObject coin = GetBigPooledObject();
 
             if(coin != null)
             {
@@ -101,5 +132,17 @@ public class CoinSpawner : MonoBehaviour
                 coin.SetActive(true);
             }
         }
+    }
+
+    public GameObject DisabledCoin(GameObject coin)
+    {
+        for (int i = 0; i < bigPooledObjects.Count; i++)
+        {
+            if (bigPooledObjects.Contains(coin))
+            {
+                return bigPooledObjects[i];
+            }
+        }
+        return null;
     }
 }

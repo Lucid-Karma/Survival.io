@@ -22,9 +22,8 @@ public class EnemyHealthController : MonoBehaviour, IDamageable
 
         if (currentHealth <= 0)
         {
-            Instantiate(coinObject, new Vector3(transform.position.x,coinObject.transform.position.y,transform.position.z), transform.rotation);
-
-            //CoinSpawner.SharedInstance.GetCoin(transform.position);
+            Vector3 coinPos = new Vector3(transform.position.x, coinObject.transform.position.y, transform.position.z);
+            CoinSpawner.SharedInstance.GetSmallCoin(coinPos);
 
             Debug.Log("Enemy Dead !");
 
