@@ -5,11 +5,14 @@ using UnityEngine;
 public class CoinMove : MonoBehaviour
 {
     [HideInInspector] public Transform playerTransform;
+
+    [SerializeField] private float coinValue;
+
     Coin coinScript;
 
     void Start()
     {
-        playerTransform = GameObject.FindGameObjectWithTag("Player").transform; // Bir objeyi referans g�stermeden direkt ba�laman�n yolu
+        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         coinScript = GetComponent<Coin>();
     }
     void Update()
@@ -24,6 +27,8 @@ public class CoinMove : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            CoinTextUI.instance.totalCoin += coinValue;
+
             this.enabled = false;
             gameObject.SetActive(false);
         }

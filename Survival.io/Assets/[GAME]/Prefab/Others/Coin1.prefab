@@ -98,7 +98,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c367ea197559b3d49b62e15885beecb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTransform: {fileID: 0}
   moveSpeed: 8
 --- !u!114 &2778772299654284230
 MonoBehaviour:
@@ -112,6 +111,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a61ea9a4ca24754ca6f20749ba2bf47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerTransform: {fileID: 0}
+  coinValue: 10
 --- !u!136 &-9009001209830060910
 CapsuleCollider:
   m_ObjectHideFlags: 0
