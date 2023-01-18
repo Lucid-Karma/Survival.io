@@ -14,11 +14,12 @@ public class EnemyHealthController : MonoBehaviour, IDamageable
         instance = this;
     }
 
-    public void Damage()
+    public void Damage(float damage)
     {
         transform.position -= transform.forward * recoil;
         //BaseBulletSpawner.SharedInstance.SetEnemyHealth(currentHealth);
-        currentHealth -= BaseBulletSpawner.SharedInstance.damage;
+        currentHealth -= damage;
+        Debug.Log(currentHealth);
 
         if (currentHealth <= 0)
         {

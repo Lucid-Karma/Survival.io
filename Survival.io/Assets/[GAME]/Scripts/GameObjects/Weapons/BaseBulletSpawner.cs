@@ -4,10 +4,7 @@ using UnityEngine;
 
 public abstract class BaseBulletSpawner : MonoBehaviour
 {
-    public static BaseBulletSpawner SharedInstance;
-
     public float speedTime;
-    public float damage;
 
     public List<GameObject> pooledObjects = new List<GameObject>();
     public GameObject objectToPool;
@@ -20,8 +17,6 @@ public abstract class BaseBulletSpawner : MonoBehaviour
 
     void Awake() 
     {
-        SharedInstance = this;
-
         for (int i = 0; i < amountToPool; i++) 
         {
             GameObject obj = (GameObject)Instantiate(objectToPool);
