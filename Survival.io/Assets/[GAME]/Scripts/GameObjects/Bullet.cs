@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] private float bulletSpeed;
+    public float damage;
 
     // private bool activatedControl = true;
 
@@ -25,7 +26,7 @@ public class Bullet : MonoBehaviour
 
         if(damageable != null)
         {
-            damageable.Damage();
+            damageable.Damage(damage);
             gameObject.SetActive(false);
         }
 
