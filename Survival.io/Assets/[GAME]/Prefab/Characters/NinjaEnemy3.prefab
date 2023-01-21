@@ -686,7 +686,7 @@ GameObject:
   - component: {fileID: 4705475032410737663}
   - component: {fileID: 7539116121438439656}
   m_Layer: 0
-  m_Name: NinjaEnemy
+  m_Name: NinjaEnemy3
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -793,7 +793,8 @@ MonoBehaviour:
   maxHealth: 10
   currentHealth: 10
   recoil: 0.2
-  coinObject: {fileID: 6128904298678483890, guid: efa3f090f42cc4a4b88386f106faec46, type: 3}
+  numberOfListCoin: 2
+  coinObject: {fileID: 6128904298678483890, guid: 5b913b5be4ee59e40b778bee1b633416, type: 3}
 --- !u!1 &4276588468308416157
 GameObject:
   m_ObjectHideFlags: 0

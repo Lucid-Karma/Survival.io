@@ -7,6 +7,8 @@ public class EnemyHealthController : MonoBehaviour, IDamageable
     public static EnemyHealthController instance;
 
     public float maxHealth, currentHealth, recoil;
+    [SerializeField] private int numberOfListCoin;
+
     [SerializeField] private GameObject coinObject;
 
     private void Awake()
@@ -24,7 +26,7 @@ public class EnemyHealthController : MonoBehaviour, IDamageable
         if (currentHealth <= 0)
         {
             Vector3 coinPos = new Vector3(transform.position.x, coinObject.transform.position.y, transform.position.z);
-            CoinSpawner.SharedInstance.GetSmallCoin(coinPos);
+            CoinSpawner.SharedInstance.GetSmallCoin(coinPos, numberOfListCoin);
 
             Debug.Log("Enemy Dead !");
 

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2778772299654284230}
   - component: {fileID: -9009001209830060910}
   m_Layer: 0
-  m_Name: Coin1
+  m_Name: Coin2
   m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 0}
-  coinValue: 5
+  coinValue: 10
 --- !u!136 &-9009001209830060910
 CapsuleCollider:
   m_ObjectHideFlags: 0

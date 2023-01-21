@@ -23,16 +23,19 @@ public class CoinSpawner : MonoBehaviour
     {
         SharedInstance = this;
 
-        for (int i = 0; i < amountToPool; i++) 
+        for (int i = 0; i < objectToPool.Length - 1; i++) 
         {
-            GameObject obj = (GameObject)Instantiate(objectToPool[0]);
-            obj.SetActive(false); 
-            smallPooledObjects.Add(obj);
+            for (int j = 0; j < amountToPool; j++)
+            {
+                GameObject obj = (GameObject)Instantiate(objectToPool[i]);
+                obj.SetActive(false);
+                smallPooledObjects.Add(obj);
+            }
         }
 
         for (int j = 0; j < amountToPoolBigCoin; j++) 
         {
-            GameObject Bobj = (GameObject)Instantiate(objectToPool[1]);  // ?????
+            GameObject Bobj = (GameObject)Instantiate(objectToPool[objectToPool.Length-1]);  // ?????
             Bobj.SetActive(false); 
             bigPooledObjects.Add(Bobj);
         }
@@ -43,9 +46,11 @@ public class CoinSpawner : MonoBehaviour
         GetBigCoinFirstTime();
     }
 
-    public GameObject GetSmallPooledObject() 
+    public GameObject GetSmallPooledObject(int numberOfList) 
     {
-        for (int i = 0; i < smallPooledObjects.Count; i++) 
+        numberOfList = numberOfList * amountToPool;
+
+        for (int i = numberOfList; i < smallPooledObjects.Count; i++) 
         {
             if (!smallPooledObjects[i].activeInHierarchy) 
             {
@@ -68,9 +73,9 @@ public class CoinSpawner : MonoBehaviour
         return null;
     }
 
-    public void GetSmallCoin(Vector3 pos)   
+    public void GetSmallCoin(Vector3 pos, int numberOfList)   
     {
-        GameObject coin = GetSmallPooledObject();
+        GameObject coin = GetSmallPooledObject(numberOfList);
 
         if(coin != null)
         {
