@@ -14,6 +14,9 @@ public abstract class BaseBulletSpawner : MonoBehaviour
 
     
     protected float timer;
+    public int maxBulletCount;
+    public int currentBulletCount;
+    public static bool isReloading = false;
 
     void Awake() 
     {
@@ -29,14 +32,48 @@ public abstract class BaseBulletSpawner : MonoBehaviour
 
     public void FixedUpdate()
     {
+        if(PlayerController.instance.isInsideRun)
+        {
+            currentBulletCount = maxBulletCount;
+            isReloading = false;
+        }
+
         if (timer >= speedTime)
         {
-            GetBullet();
+            if (currentBulletCount > 0)
+            {
+                isReloading = false;
+                currentBulletCount --;
+                GetBullet();
+                Debug.Log(currentBulletCount);
+            }
+            else if(currentBulletCount == 0)
+            {
+                StartCoroutine(Reload());
+            }
+
             timer = 0;
         }
 
         timer += 0.02f;
     }
+
+    IEnumerator Reload()
+    {
+        if(isReloading)
+            yield break;
+        
+        isReloading = true;
+        // Debug.Log("Reloading...");
+
+        // Debug.Log("Started Coroutine at timestamp : " + Time.time);
+        yield return new WaitForSeconds(1.7f);  // 4.083f for running reload.- 3.3f for idle reload.
+        //Debug.Log("Finished Coroutine at timestamp : " + Time.time);
+
+        currentBulletCount = maxBulletCount;
+        isReloading = false;
+    }
+
 
     public GameObject GetPooledObject() 
     {
@@ -68,9 +105,4 @@ public abstract class BaseBulletSpawner : MonoBehaviour
     {
         return gameObject.transform.position;
     }
-
-    // public void SetEnemyHealth(float health)
-    // {
-    //     health -= damage;
-    // }
 }

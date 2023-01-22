@@ -8,7 +8,10 @@ public enum ExecutingState
     OUTRUN,
     OUTIDLE,
     INRUN,
-    INIDLE
+    INIDLE,
+
+    IDLERELOAD,
+    RUNRELOAD
 }
 
 [RequireComponent(typeof(Rigidbody), typeof(CapsuleCollider))]
@@ -24,6 +27,9 @@ public class PlayerController : MonoBehaviour
     public InRunningState inRunningState = new InRunningState();
     public InIdleState inIdleState = new InIdleState();
 
+    public RuningReloadState runningReloadState = new RuningReloadState();
+    public IdlingReloadState idlingReloadState = new IdlingReloadState();
+
     public ExecutingState executingState;
 
 
@@ -36,6 +42,12 @@ public class PlayerController : MonoBehaviour
     //AnimationController animationController;
 
     public bool OutSide = true;
+    
+    public bool isInsideRun = false;
+    public void SetBool(bool insideOrNot)
+    {
+        isInsideRun = insideOrNot;
+    }
 
     private void Awake()
     {
@@ -60,13 +72,25 @@ public class PlayerController : MonoBehaviour
         {
             transform.rotation = Quaternion.LookRotation(rigidBody.velocity);
 
-            if (OutSide)    executingState = ExecutingState.OUTRUN;
+            if (OutSide)    //executingState = ExecutingState.OUTRUN;
+            {
+                if(BaseBulletSpawner.isReloading)
+                    executingState = ExecutingState.RUNRELOAD;
+                else if(!BaseBulletSpawner.isReloading)
+                    executingState = ExecutingState.OUTRUN;
+            }
             else    executingState = ExecutingState.INRUN;
 
         }
         else
         {
-            if (OutSide)    executingState = ExecutingState.OUTIDLE;
+            if (OutSide)    //executingState = ExecutingState.OUTIDLE;
+            {
+                if(BaseBulletSpawner.isReloading)
+                    executingState = ExecutingState.IDLERELOAD;
+                else if(!BaseBulletSpawner.isReloading)
+                    executingState = ExecutingState.OUTIDLE;
+            }
             else    executingState = ExecutingState.INIDLE;
         }
         
