@@ -7,6 +7,7 @@ public class OutIdleState : PlayerStates
     public override void EnterState(PlayerController fsm)
     {
         Debug.Log("out idle");
+        fsm.SetBool(false);
     }
 
     public override void UpdateState(PlayerController fsm)
@@ -17,6 +18,8 @@ public class OutIdleState : PlayerStates
             fsm.animator.SetBool("isOutRunning", false);
             fsm.animator.SetBool("isInRunning", false);
             fsm.animator.SetBool("isInIdle", false);
+            fsm.animator.SetBool("isIdleReloading", false);
+            fsm.animator.SetBool("isRunningReload", false);
         }
         else
             ExitState(fsm);
@@ -32,6 +35,14 @@ public class OutIdleState : PlayerStates
         else if(fsm.executingState == ExecutingState.OUTRUN)
         {
             fsm.SwitchState(fsm.outRunningState);
+        }
+        else if(fsm.executingState == ExecutingState.RUNRELOAD)
+        {
+            fsm.SwitchState(fsm.runningReloadState);
+        }
+        else if(fsm.executingState == ExecutingState.IDLERELOAD)
+        {
+            fsm.SwitchState(fsm.idlingReloadState);
         }
     }
 }

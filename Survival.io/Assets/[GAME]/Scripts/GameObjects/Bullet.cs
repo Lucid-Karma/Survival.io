@@ -6,18 +6,10 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] private float bulletSpeed;
     public float damage;
-
-    // private bool activatedControl = true;
-
+    
     void FixedUpdate()
     {
         transform.position += transform.forward * bulletSpeed * Time.fixedDeltaTime;
-
-        /*if (activatedControl)
-        {
-            activatedControl = false;
-            StartCoroutine(DisposeBullet());
-        }*/
     }
 
     void OnTriggerEnter(Collider other)

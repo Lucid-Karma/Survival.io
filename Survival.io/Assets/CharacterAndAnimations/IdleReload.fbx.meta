@@ -36,8 +36,8 @@ ModelImporter:
       name: Reloading
       takeName: mixamo.com
       internalID: -203655887218126122
-      firstFrame: 0
-      lastFrame: 198
+      firstFrame: 48
+      lastFrame: 150
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

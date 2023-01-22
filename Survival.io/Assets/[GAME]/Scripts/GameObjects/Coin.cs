@@ -20,6 +20,5 @@ public class Coin : MonoBehaviour, ICollectable
     public void Collect()
     {
         coinMoveScript.enabled = true;
-        Debug.Log("Take Coin");
     }
 }
