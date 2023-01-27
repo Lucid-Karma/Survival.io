@@ -18,7 +18,7 @@ public class GunController : MonoBehaviour
 
     private void Start()
     {
-        activeGun = gunList[0];
+        activeGun = gunList[1];
         activeGun.SetActive(true);
     }
 

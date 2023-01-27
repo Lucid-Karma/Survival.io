@@ -19,6 +19,7 @@ public class EnemySpawner : MonoBehaviour
     public bool enemyCreateFinish;
 
     [Header("Enemy Spawn Manager")]
+    // [SerializeField] private GameObject levelBOSS;
     [SerializeField] private float[] enemyCreateTime;
     [Tooltip("Listedeki hangi Enemyden başlayacağımızı seçiyoruz.")]
     public int[] listEnemyTurn;
@@ -32,7 +33,7 @@ public class EnemySpawner : MonoBehaviour
     {
         SharedInstance = this;
 
-        for (int j = 0; j < enemyPrefab.Length; j++)
+        for (int j = 0; j < enemyPrefab.Length-1; j++)
         {
             for (int i = 0; i < maxEnemyCount; i++)
             {
@@ -41,6 +42,9 @@ public class EnemySpawner : MonoBehaviour
                 pooledObjects.Add(obj);
             }
         }
+        GameObject bossObject = Instantiate(enemyPrefab[enemyPrefab.Length - 1]);
+        bossObject.SetActive(false);
+        pooledObjects.Add(bossObject);
     }
 
     private void Start()
@@ -56,11 +60,12 @@ public class EnemySpawner : MonoBehaviour
             {
                 i++;
 
-                if (i >= listEnemyTurn.Length)
+                if (pooledObjects[pooledObjects.Count-1].activeInHierarchy    /*i >= listEnemyTurn.Length*/)
                 {
-                    // Instantiate(levelBOSS, spawnPoints[index].transform.position, transform.rotation);
-                    // ObjectPool.instance.enemyList.Add(levelBOSS);
+                    // Instantiate(levelBOSS, GetEnemyPosition(), transform.rotation);
+                    // pooledObjects.Add(levelBOSS);
                     this.enabled = false;
+                    // gameObject.SetActive(false);
                 }
 
                 enemyCreateCount = 0;

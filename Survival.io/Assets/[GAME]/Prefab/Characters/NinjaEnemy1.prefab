@@ -774,7 +774,7 @@ MonoBehaviour:
   enemyAnimator: {fileID: 7491066941288074508}
   rb: {fileID: -1597190466508655218}
   enemyCollider: {fileID: 7962784171362751811}
-  moveSpeed: 2
+  moveSpeed: 2.5
   turnSpeed: 0.04
   attackDamage: 0.2
   attackDamageBool: 0
@@ -793,6 +793,7 @@ MonoBehaviour:
   maxHealth: 2
   currentHealth: 2
   recoil: 0.2
+  numberOfListCoin: 0
   coinObject: {fileID: 6128904298678483890, guid: efa3f090f42cc4a4b88386f106faec46, type: 3}
 --- !u!1 &4276588468308416157
 GameObject:
