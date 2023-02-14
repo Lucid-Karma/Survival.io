@@ -24,6 +24,8 @@ public class OutRunningState : PlayerStates
                 fsm.animator.SetBool("isInIdle", false);
                 fsm.animator.SetBool("isIdleReloading", false);
                 fsm.animator.SetBool("isRunningReload", false);
+
+                //fsm.FindEnemy();
             }
     }
 
