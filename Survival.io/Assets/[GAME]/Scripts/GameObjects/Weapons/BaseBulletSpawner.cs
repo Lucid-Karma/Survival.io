@@ -45,7 +45,7 @@ public abstract class BaseBulletSpawner : MonoBehaviour
                 isReloading = false;
                 currentBulletCount --;
                 GetBullet();
-                Debug.Log(currentBulletCount);
+                //Debug.Log(currentBulletCount);
             }
             else if(currentBulletCount == 0)
             {

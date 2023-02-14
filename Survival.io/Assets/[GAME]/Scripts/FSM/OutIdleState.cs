@@ -20,6 +20,8 @@ public class OutIdleState : PlayerStates
             fsm.animator.SetBool("isInIdle", false);
             fsm.animator.SetBool("isIdleReloading", false);
             fsm.animator.SetBool("isRunningReload", false);
+
+            //fsm.FindEnemy();
         }
         else
             ExitState(fsm);

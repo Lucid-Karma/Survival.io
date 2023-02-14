@@ -27,8 +27,6 @@ public class EnemyHealthController : MonoBehaviour, IDamageable
             Vector3 coinPos = new Vector3(transform.position.x, coinObject.transform.position.y, transform.position.z);
             CoinSpawner.SharedInstance.GetSmallCoin(coinPos, numberOfListCoin);
 
-            Debug.Log("Enemy Dead !");
-
             gameObject.SetActive(false);
 
             ResetHealth();

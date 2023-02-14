@@ -11,18 +11,32 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private GameObject[] enemyPrefab;
 
     [SerializeField] private float maxEnemyCount, enemyCreateCount;
-    private int judge, i = 0;
+    private int judge;
     private float timer;
     private Vector3 offset;
-    [Tooltip("EnemyListte hangi sıradan oluşuma devam edeceğini gösterir.")]
-    public int counterListEnemy;
+    [Tooltip("EnemyListte hangi siradan oluşuma devam edeceğini gösterir.")]
+
+    private int listEnemyTurnIndex;
+    public int ListEnemyTurnIndex 
+    { get { return listEnemyTurnIndex; }
+
+        set 
+        {
+            if (value > 2) 
+                listEnemyTurnIndex = 2;
+            else 
+                listEnemyTurnIndex = value;
+        }
+    }
+
     public bool enemyCreateFinish;
 
     [Header("Enemy Spawn Manager")]
     // [SerializeField] private GameObject levelBOSS;
     [SerializeField] private float[] enemyCreateTime;
-    [Tooltip("Listedeki hangi Enemyden başlayacağımızı seçiyoruz.")]
+    [Tooltip("Listedeki hangi Enemyden başlayacağimizi seçiyoruz.")]
     public int[] listEnemyTurn;
+    private int intinationalI;
 
     // [SerializeField] private GameObject levelBOSS;
 
@@ -50,28 +64,28 @@ public class EnemySpawner : MonoBehaviour
     private void Start()
     {
         // enemyCreateTime = (enemyCreateTime * 60) / 100;
-        counterListEnemy = 0;
+        intinationalI = 0;
+        ListEnemyTurnIndex = 0;
     }
     private void FixedUpdate()
     {
-        if (timer >= enemyCreateTime[i] && !enemyCreateFinish)
+        if (!PlayerController.instance.OutSide)
         {
+            return;
+        }
+
+        if (timer >= enemyCreateTime[ListEnemyTurnIndex] && !enemyCreateFinish)
+        {
+
             if (enemyCreateCount >= maxEnemyCount)
             {
-                i++;
+                Debug.Log("num " + listEnemyTurnIndex + " created!!");
 
-                if (pooledObjects[pooledObjects.Count-1].activeInHierarchy    /*i >= listEnemyTurn.Length*/)
-                {
-                    // Instantiate(levelBOSS, GetEnemyPosition(), transform.rotation);
-                    // pooledObjects.Add(levelBOSS);
-                    this.enabled = false;
-                    // gameObject.SetActive(false);
-                }
+                ListEnemyTurnIndex ++;
 
                 enemyCreateCount = 0;
-                counterListEnemy = listEnemyTurn[i];
+                intinationalI = listEnemyTurn[ListEnemyTurnIndex];
             }
-
             else
             {
                 timer = 0f;
@@ -81,15 +95,19 @@ public class EnemySpawner : MonoBehaviour
 
                 if (runEnemyClone != null)
                 {
-                    Debug.Log("New enemy Created.");
                     runEnemyClone.transform.position = GetEnemyPosition(); //spawnPoints[index].transform.position;
                     runEnemyClone.SetActive(true);
                 }
 
+                Debug.Log("enemy created");
                 enemyCreateCount += 1;
+
+                if (pooledObjects[pooledObjects.Count-1].activeInHierarchy)
+                {
+                    Debug.Log("enabled");
+                    this.enabled = false;
+                }
             }
-
-
         }
         else timer += 0.01f;
 
@@ -97,7 +115,7 @@ public class EnemySpawner : MonoBehaviour
 
     public GameObject GetPooledObject()
     {
-        for (int i = counterListEnemy; i < pooledObjects.Count; i++)
+        for (int i = intinationalI; i < pooledObjects.Count; i++)
         {
             if (!pooledObjects[i].activeInHierarchy)
             {
