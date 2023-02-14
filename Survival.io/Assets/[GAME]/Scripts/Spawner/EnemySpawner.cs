@@ -22,8 +22,13 @@ public class EnemySpawner : MonoBehaviour
 
         set 
         {
-            if (value > 2) 
-                listEnemyTurnIndex = 2;
+            if (value > enemyPrefab.Length - 2) 
+            {
+                CreateBoss();
+                Debug.Log("enabled");
+                this.enabled = false;
+            }
+                //listEnemyTurnIndex = 2;
             else 
                 listEnemyTurnIndex = value;
         }
@@ -102,11 +107,11 @@ public class EnemySpawner : MonoBehaviour
                 Debug.Log("enemy created");
                 enemyCreateCount += 1;
 
-                if (pooledObjects[pooledObjects.Count-1].activeInHierarchy)
-                {
-                    Debug.Log("enabled");
-                    this.enabled = false;
-                }
+                // if (pooledObjects[pooledObjects.Count-1].activeInHierarchy)
+                // {
+                //     Debug.Log("enabled");
+                //     this.enabled = false;
+                // }
             }
         }
         else timer += 0.01f;
@@ -124,6 +129,16 @@ public class EnemySpawner : MonoBehaviour
         }
 
         return null;
+    }
+
+    public void CreateBoss()
+    {
+        if (!pooledObjects[pooledObjects.Count-1].activeInHierarchy)
+        {
+            pooledObjects[pooledObjects.Count-1].transform.position = GetEnemyPosition();
+            pooledObjects[pooledObjects.Count-1].SetActive(true);
+            Debug.Log("BOSS CREATED");
+        }
     }
 
     private bool control = true;
