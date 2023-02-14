@@ -6,12 +6,18 @@ using UnityEngine.UI;
 public class UITriggerController : MonoBehaviour
 {
     [SerializeField] private Image filledArea;
+    [SerializeField] private Animator animator;
+
+    private GameObject playerObject;
 
     private bool fillAreaBool;
+
+
 
     void Start()
     {
         filledArea.fillAmount = 0;
+        playerObject = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
@@ -25,17 +31,28 @@ public class UITriggerController : MonoBehaviour
         {
             filledArea.fillAmount -= 0.02f;
         }
+
+        if (filledArea.fillAmount == 1)
+        {
+            animator.SetBool("UIOpen",true);
+            animator.SetBool("UIClose", false);
+        }
+        else
+        {
+            animator.SetBool("UIClose", true);
+            animator.SetBool("UIOpen", false);
+        }
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject == playerObject)
         {
             fillAreaBool = true;
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject == playerObject) 
         {
             fillAreaBool = false;
             // filledArea.fillAmount = 0;
