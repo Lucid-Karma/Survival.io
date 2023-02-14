@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using System.Linq;
 
 public enum ExecutingState
 {
@@ -70,16 +71,20 @@ public class PlayerController : MonoBehaviour
 
         calculateRotation();
 
-        if (OutSide)
+        if (EnemySpawner.SharedInstance.pooledObjects.Any(x => x.activeInHierarchy))
         {
-            Vector3 direction = (keepObject.transform.position - transform.position).normalized;
-            rotationGoal = Quaternion.LookRotation(direction);
-            transform.rotation = Quaternion.Slerp(transform.rotation, rotationGoal, turnSpeed); // Smooth change rotation
+            if (OutSide)
+            {
+                Vector3 direction = (keepObject.transform.position - transform.position).normalized;
+                rotationGoal = Quaternion.LookRotation(direction);
+                transform.rotation = Quaternion.Slerp(transform.rotation, rotationGoal, turnSpeed); // Smooth change rotation
+            }
         }
 
-        if (!keepObject.activeInHierarchy)
+        if (keepObject != null)
         {
-            keepObject = null;
+            if(!keepObject.activeInHierarchy)
+                keepObject = null;
         }
 
 
@@ -122,6 +127,13 @@ public class PlayerController : MonoBehaviour
 
         keepObject = null;
     }
+
+    // public void FindEnemy()
+    // {
+    //     Vector3 direction = (keepObject.transform.position - transform.position).normalized;
+    //     rotationGoal = Quaternion.LookRotation(direction);
+    //     transform.rotation = Quaternion.Slerp(transform.rotation, rotationGoal, turnSpeed); // Smooth change rotation
+    // }
 
     public void SwitchState(PlayerStates nextState)
     {
