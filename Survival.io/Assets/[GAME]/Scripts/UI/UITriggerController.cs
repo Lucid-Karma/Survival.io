@@ -47,15 +47,25 @@ public class UITriggerController : MonoBehaviour
     {
         if (other.gameObject == playerObject)
         {
-            fillAreaBool = true;
+            WaitHerePanelOpen();
         }
     }
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject == playerObject) 
         {
-            fillAreaBool = false;
+            WaitHerePanelClose();
             // filledArea.fillAmount = 0;
         }
+    }
+
+    public void WaitHerePanelOpen()
+    {
+        fillAreaBool = true;
+    }
+
+    public void WaitHerePanelClose()
+    {
+        fillAreaBool = false;
     }
 }
