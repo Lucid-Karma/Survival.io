@@ -13,4 +13,8 @@ public class EventManager : MonoBehaviour
     public static UnityEvent OnCharacterOutIdle = new UnityEvent();
     public static UnityEvent OnCharacterInIdle = new UnityEvent();
     public static UnityEvent OnEnemyDying = new UnityEvent();
+
+
+    public static UnityEvent OnGameStart = new UnityEvent();
+    public static UnityEvent OnLevelStart = new UnityEvent();
 }
