@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameStart : MonoBehaviour
 {
     //public GameObject startButton;
+    [SerializeField] private Animator animator;
 
     public void StartLevelButton()
     {
@@ -17,8 +18,10 @@ public class GameStart : MonoBehaviour
 
     IEnumerator StartLevel()
     {
-        
-        yield return new WaitForSeconds(1.5f);
+        animator.SetBool("TransitionStart", true);
+
+        yield return new WaitForSeconds(2f);
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
