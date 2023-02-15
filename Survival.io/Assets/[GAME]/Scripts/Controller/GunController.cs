@@ -61,9 +61,11 @@ public class GunController : MonoBehaviour
         }
         else
         {
-            StartCoroutine(GunActivatedTime());
+            activeGun.SetActive(true);
+            // StartCoroutine(GunActivatedTime());
         }
     }
+
     IEnumerator GunActivatedTime()
     {
         yield return new WaitForSeconds(.15f);
