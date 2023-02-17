@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 6793096542349173000}
   - component: {fileID: 7631972738766679725}
   - component: {fileID: 5624645795827931751}
-  - component: {fileID: -2771703806521401569}
-  - component: {fileID: 2778772299654284230}
+  - component: {fileID: -4774174027330072751}
+  - component: {fileID: -8643646737158198820}
   - component: {fileID: -9009001209830060910}
   m_Layer: 0
   m_Name: Big Coin
@@ -86,7 +86,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &-2771703806521401569
+--- !u!114 &-4774174027330072751
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -95,11 +95,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 6128904298678483890}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c367ea197559b3d49b62e15885beecb1, type: 3}
+  m_Script: {fileID: 11500000, guid: 12317d4fdad7f5041961b5422786a544, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerTransform: {fileID: 0}
   moveSpeed: 8
---- !u!114 &2778772299654284230
+--- !u!114 &-8643646737158198820
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -108,7 +109,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6128904298678483890}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a61ea9a4ca24754ca6f20749ba2bf47, type: 3}
+  m_Script: {fileID: 11500000, guid: c6c02df35e2f55749bd4b0277855ff8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 0}

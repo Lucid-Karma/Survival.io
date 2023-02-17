@@ -5,9 +5,6 @@ using UnityEngine.Events;
 
 public class EventManager : MonoBehaviour
 {
-    /*public static UnityEvent enemyMovementAnimation = new UnityEvent();
-    public static UnityEvent enemyAttackAnimation = new UnityEvent();
-     */
     public static UnityEvent OnCharacterOutRunning = new UnityEvent();
     public static UnityEvent OnCharacterInRunning = new UnityEvent();
     public static UnityEvent OnCharacterOutIdle = new UnityEvent();
@@ -17,4 +14,8 @@ public class EventManager : MonoBehaviour
 
     public static UnityEvent OnGameStart = new UnityEvent();
     public static UnityEvent OnLevelStart = new UnityEvent();
+
+    public static UnityEvent OnSpeedIncrease = new UnityEvent();
+    public static UnityEvent OnAmmoIncrease = new UnityEvent();
+    public static UnityEvent OnDamageIncrease = new UnityEvent();
 }

@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class BuyButtonController : MonoBehaviour
+public class BuyUpdateGunButton : MonoBehaviour
 {
     [SerializeField] private float buyValue;
     [SerializeField] private TextMeshProUGUI buyTMP;
     [SerializeField] private CanvasGroup buyButton;
+    [SerializeField] private GameObject[] buyButtons;
 
-    private int updateCounter = 0;
+    private GameObject tempObject;
+
+    private int updateCounter = 0, i = 0;
 
 
     private void Start()
@@ -18,7 +21,7 @@ public class BuyButtonController : MonoBehaviour
     }
     private void Update()
     {
-        if (updateCounter < 5)
+        if (updateCounter < 3)
         {
             buyTMP.text = buyValue.ToString();
 
@@ -45,21 +48,18 @@ public class BuyButtonController : MonoBehaviour
 
         updateCounter++;
 
-        buyValue += (int)(buyValue * 20 / 100);
+        tempObject = buyButtons[i];
+        i++;
+
+        if (buyButtons[i] != null)
+        {
+            tempObject.SetActive(false);
+            buyButtons[i].SetActive(true);
+        }
+
+        buyValue *= 4;
         buyTMP.text = buyValue.ToString();
-    }
 
-    public void AmmoButton()
-    {
-        BuyButtonMethod();
-
-        EventManager.OnAmmoIncrease.Invoke();
-    }
-
-    public void SpeedButton()
-    {
-        BuyButtonMethod();
-
-        EventManager.OnSpeedIncrease.Invoke();
+        GunController.instance.gunIncrease();
     }
 }

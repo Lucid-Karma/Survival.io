@@ -5,11 +5,15 @@ using DG.Tweening;
 
 public class GunController : MonoBehaviour
 {
+    public static GunController instance;
     public List<GameObject> gunList = new List<GameObject>();
     private GameObject activeGun;
+    private int i = 0;
 
     void Awake()
     {
+        instance = this;
+
         foreach (GameObject gun in gunList)
         {
             gun.SetActive(false);
@@ -18,7 +22,7 @@ public class GunController : MonoBehaviour
 
     private void Start()
     {
-        activeGun = gunList[1];
+        activeGun = gunList[0];
         activeGun.SetActive(true);
     }
 
@@ -70,5 +74,11 @@ public class GunController : MonoBehaviour
     {
         yield return new WaitForSeconds(.15f);
         activeGun.SetActive(true);
+    }
+
+    public void gunIncrease()
+    {
+        i++;
+        activeGun = gunList[i];
     }
 }

@@ -7,14 +7,15 @@ public class BigCoin : MonoBehaviour, ICollectable
 {
     [HideInInspector] public Transform playerTransform;
     public float moveSpeed;
-    CoinMove coinMoveScript;
+    BigCoinMove bigCoinMoveScript;
 
     private float time = 4;
 
     private void Start()
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform; // Bir objeyi referans g�stermeden direkt ba�laman�n yolu
-        coinMoveScript = GetComponent<CoinMove>();
+
+        bigCoinMoveScript = GetComponent<BigCoinMove>();
 
         transform.DOLocalRotate(new Vector3(0, 360, 0), time, RotateMode.FastBeyond360).SetRelative(true).SetEase(Ease.Linear).SetLoops(-1, LoopType.Restart);
     }
@@ -23,18 +24,18 @@ public class BigCoin : MonoBehaviour, ICollectable
     {
         if (other.gameObject.tag == "Player")
         {
-            gameObject.SetActive(false);
             CoinSpawner.SharedInstance.GetBigCoin();
+            gameObject.SetActive(false);
         }
     }
 
     public void Collect()
     {
-        coinMoveScript.enabled = true;
+        bigCoinMoveScript.enabled = true;
     }
 
     private void OnDisable()
     {
-        coinMoveScript.enabled = false;
+        bigCoinMoveScript.enabled = false;
     }
 }

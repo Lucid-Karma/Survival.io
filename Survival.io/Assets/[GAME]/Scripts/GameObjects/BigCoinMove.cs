@@ -2,26 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CoinMove : MonoBehaviour
+public class BigCoinMove : MonoBehaviour
 {
     [HideInInspector] public Transform playerTransform;
 
     [SerializeField] private float coinValue;
 
-    Coin coinScript;
+    BigCoin bigCoinScript;
     // CoinMove coinMoveScript;
 
     void Start()
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-        coinScript = GetComponent<Coin>();
+        bigCoinScript = GetComponent<BigCoin>();
     }
     void Update()
     {
         Vector3 playerNewTransform = playerTransform.position;
         playerNewTransform.y += 1f;
 
-        transform.position = Vector3.MoveTowards(transform.position, playerNewTransform, coinScript.moveSpeed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, playerNewTransform, bigCoinScript.moveSpeed * Time.deltaTime);
     }
 
     private void OnTriggerEnter(Collider other)
