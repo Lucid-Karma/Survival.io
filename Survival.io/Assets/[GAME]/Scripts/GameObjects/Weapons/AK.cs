@@ -6,8 +6,8 @@ public class AK : BaseBulletSpawner
 {
     public override void Start()
     {
-        speedTime = 0.07f;
-        maxBulletCount = 100;
+        speedTime = 0.12f;
+        maxBulletCount = 50;
         currentBulletCount = maxBulletCount;
     }
 }

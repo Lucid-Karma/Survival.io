@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UITriggerController : MonoBehaviour
+public class WaitHereController : MonoBehaviour
 {
     [SerializeField] private Image filledArea;
     [SerializeField] private Animator animator;

@@ -9,6 +9,8 @@ public class PlayerHealthController : MonoBehaviour
     public float maxHealth, currentHealth;
     [SerializeField] private HealthBar healthBar;
 
+    private bool isDeath = false;
+
     private void Awake()
     {
         instance = this;
@@ -23,14 +25,17 @@ public class PlayerHealthController : MonoBehaviour
     {
         healthBar.updateHealthBar(maxHealth, currentHealth);
         
-        if (currentHealth <= 0)
+        if (currentHealth <= 0 && !isDeath)
         {
+            GameController.instance.FailBoolMethod();
 
+            isDeath = true;
         }
     }
 
     private void ResetHealth()
     {
         currentHealth = maxHealth;
+        isDeath = false;
     }
 }

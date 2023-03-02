@@ -1920,8 +1920,8 @@ GameObject:
   - component: {fileID: 7524580146768377144}
   - component: {fileID: 5089344742099819009}
   - component: {fileID: 2524644301147181709}
-  - component: {fileID: 6782224837710050391}
-  m_Layer: 0
+  - component: {fileID: -4401717728930522656}
+  m_Layer: 6
   m_Name: EndBossFinal2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -2014,7 +2014,7 @@ MonoBehaviour:
   turnSpeed: 0.04
   attackDamage: 0.5
   attackDamageBool: 0
---- !u!114 &6782224837710050391
+--- !u!114 &-4401717728930522656
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2023,7 +2023,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6148712163914133226}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 127e6c555e8ae4b45858cf9259215058, type: 3}
+  m_Script: {fileID: 11500000, guid: 52dd72df38b9f2646b047458b613db03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500

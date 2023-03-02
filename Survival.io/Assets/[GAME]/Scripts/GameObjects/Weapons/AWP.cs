@@ -6,8 +6,8 @@ public class AWP : BaseBulletSpawner
 {
     public override void Start()
     {
-        speedTime = 0.07f;
-        maxBulletCount = 100;
+        speedTime = 0.8f;
+        maxBulletCount = 10;
         currentBulletCount = maxBulletCount;
     }
 }
