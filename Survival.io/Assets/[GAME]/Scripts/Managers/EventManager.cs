@@ -18,4 +18,7 @@ public class EventManager : MonoBehaviour
     public static UnityEvent OnSpeedIncrease = new UnityEvent();
     public static UnityEvent OnAmmoIncrease = new UnityEvent();
     public static UnityEvent OnDamageIncrease = new UnityEvent();
+
+
+    public static UnityEvent OnGunUpdate = new UnityEvent();
 }

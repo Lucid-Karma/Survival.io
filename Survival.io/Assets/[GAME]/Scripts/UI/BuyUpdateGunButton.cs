@@ -61,5 +61,6 @@ public class BuyUpdateGunButton : MonoBehaviour
         buyTMP.text = buyValue.ToString();
 
         GunController.instance.gunIncrease();
+        EventManager.OnGunUpdate.Invoke();
     }
 }
