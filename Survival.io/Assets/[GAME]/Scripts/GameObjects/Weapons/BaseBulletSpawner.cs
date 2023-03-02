@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class BaseBulletSpawner : MonoBehaviour
 {
+    public BaseBulletSpawner instance;
     public float speedTime;
 
     public List<GameObject> pooledObjects = new List<GameObject>();
@@ -14,12 +15,14 @@ public abstract class BaseBulletSpawner : MonoBehaviour
 
     
     protected float timer;
-    public int maxBulletCount;
-    public int currentBulletCount;
+    public static int maxBulletCount;
+    public static int currentBulletCount;       // ?????
     public static bool isReloading = false;
 
     void Awake() 
     {
+        instance = this;
+        
         for (int i = 0; i < amountToPool; i++) 
         {
             GameObject obj = (GameObject)Instantiate(objectToPool);
