@@ -9,7 +9,7 @@ public class PlayerHealthController : MonoBehaviour
     public float maxHealth, currentHealth;
     [SerializeField] private HealthBar healthBar;
 
-    private bool isDeath = false;
+    public bool isDeath = false;
 
     private void Awake()
     {

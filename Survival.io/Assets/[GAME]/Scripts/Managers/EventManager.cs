@@ -14,6 +14,7 @@ public class EventManager : MonoBehaviour
 
     public static UnityEvent OnGameStart = new UnityEvent();
     public static UnityEvent OnLevelStart = new UnityEvent();
+    public static UnityEvent OnLevelEnd = new UnityEvent();
 
     public static UnityEvent OnSpeedIncrease = new UnityEvent();
     public static UnityEvent OnAmmoIncrease = new UnityEvent();

@@ -15,11 +15,12 @@ public class IdlingReloadState : PlayerStates
         if (fsm.executingState == ExecutingState.IDLERELOAD)
         {
             fsm.animator.SetBool("isOutIdle", false);
-        fsm.animator.SetBool("isOutRunning", false);
-        fsm.animator.SetBool("isInRunning", false);
-        fsm.animator.SetBool("isInIdle", false);
-        fsm.animator.SetBool("isIdleReloading", true);
-        fsm.animator.SetBool("isRunningReload", false);
+            fsm.animator.SetBool("isOutRunning", false);
+            fsm.animator.SetBool("isInRunning", false);
+            fsm.animator.SetBool("isInIdle", false);
+            fsm.animator.SetBool("isIdleReloading", true);
+            fsm.animator.SetBool("isRunningReload", false);
+            fsm.animator.SetBool("isDead", false);
         }
         else
             ExitState(fsm);
@@ -42,6 +43,10 @@ public class IdlingReloadState : PlayerStates
         else if(fsm.executingState == ExecutingState.OUTIDLE)
         {
             fsm.SwitchState(fsm.outIdleState);
+        } 
+        else if(fsm.executingState == ExecutingState.DEAD)
+        {
+            fsm.SwitchState(fsm.deathState);
         } 
     }
 }

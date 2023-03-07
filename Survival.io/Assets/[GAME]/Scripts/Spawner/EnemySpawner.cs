@@ -74,6 +74,8 @@ public class EnemySpawner : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        if(GameManager.instance.isLevelEnd) return;
+        
         if (!PlayerController.instance.OutSide)
         {
             return;

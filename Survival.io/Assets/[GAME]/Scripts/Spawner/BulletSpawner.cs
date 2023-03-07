@@ -28,6 +28,8 @@ public class BulletSpawner : MonoBehaviour
 
     void FixedUpdate()
     {
+        if(GameManager.instance.isLevelEnd) return;
+        
         if (timer >= 0.04f)
         {
             GetBullet();

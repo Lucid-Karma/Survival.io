@@ -20,6 +20,7 @@ public class InIdleState : PlayerStates
             fsm.animator.SetBool("isInIdle", true);
             fsm.animator.SetBool("isIdleReloading", false);
             fsm.animator.SetBool("isRunningReload", false);
+            fsm.animator.SetBool("isDead", false);
         }
         else 
             ExitState(fsm);
