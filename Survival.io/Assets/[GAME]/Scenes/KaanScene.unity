@@ -8490,14 +8490,14 @@ MonoBehaviour:
   - {fileID: 4205906620207091148, guid: 7a4dec07ea716b242baa235c2d8bc5d3, type: 3}
   - {fileID: 4205906620207091148, guid: b1b91ecabc96ff44083374a620aca6b5, type: 3}
   - {fileID: 6148712163914133226, guid: 86a78963e213fdc4bb3f7cc68a38efe6, type: 3}
-  maxEnemyCount: 10
+  maxEnemyCount: 50
   enemyCreateCount: 0
   enemyCreateFinish: 0
   enemyCreateTime:
-  - 0.2
   - 0.3
   - 0.4
-  listEnemyTurn: 000000000a00000014000000
+  - 0.5
+  listEnemyTurn: 000000003200000064000000
 --- !u!4 &824084991
 Transform:
   m_ObjectHideFlags: 0
@@ -8534,7 +8534,7 @@ MonoBehaviour:
   - {fileID: 6128904298678483890, guid: 1871553200831a345961e4f7e6a70309, type: 3}
   amountToPool: 80
   amountToPoolBigCoin: 10
-  targetCoinCount: 5
+  targetCoinCount: 3
 --- !u!1001 &840175291
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9632,7 +9632,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 933062486}
-  m_LocalRotation: {x: 0.49269882, y: 0.000000029945966, z: -0.000000016955122, w: 0.8701999}
+  m_LocalRotation: {x: 0.49269885, y: -0.000000029945994, z: 0.000000016955134, w: 0.8701999}
   m_LocalPosition: {x: 18, y: 10, z: -6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -10312,7 +10312,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.49269882, y: 0.000000029945966, z: -0.000000016955122, w: 0.8701999}
+  m_LocalRotation: {x: 0.49269885, y: -0.000000029945994, z: 0.000000016955134, w: 0.8701999}
   m_LocalPosition: {x: 18, y: 10, z: -6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -23394,6 +23394,10 @@ PrefabInstance:
       value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 1671003019714951008, guid: d9893c7e885e0a648ba63fe87b38e025, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1671003019714951008, guid: d9893c7e885e0a648ba63fe87b38e025, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -23453,6 +23457,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 553386034}
+    - target: {fileID: 1671003020661447455, guid: d9893c7e885e0a648ba63fe87b38e025, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DamageButton
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9893c7e885e0a648ba63fe87b38e025, type: 3}
 --- !u!1001 &2216474387584677918

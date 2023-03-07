@@ -62,4 +62,11 @@ public class BuyButtonController : MonoBehaviour
 
         EventManager.OnSpeedIncrease.Invoke();
     }
+
+    public void DamageButton()
+    {
+        BuyButtonMethod();
+
+        EventManager.OnDamageIncrease.Invoke();
+    }
 }

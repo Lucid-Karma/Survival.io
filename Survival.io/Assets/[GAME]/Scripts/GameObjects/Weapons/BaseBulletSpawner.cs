@@ -4,7 +4,8 @@ using UnityEngine;
 
 public abstract class BaseBulletSpawner : MonoBehaviour
 {
-    public BaseBulletSpawner instance;
+    public static BaseBulletSpawner instance;
+
     public float speedTime;
 
     public List<GameObject> pooledObjects = new List<GameObject>();

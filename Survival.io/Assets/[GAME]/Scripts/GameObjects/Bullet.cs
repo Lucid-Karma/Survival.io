@@ -27,4 +27,14 @@ public class Bullet : MonoBehaviour
             gameObject.SetActive(false);
         }
     }
+    private void OnEnable()
+    {
+        EventManager.OnDamageIncrease.AddListener(() =>
+        damage += 0.5f);
+    }
+    private void OnDisable()
+    {
+        EventManager.OnDamageIncrease.RemoveListener(() =>
+        damage = damage);
+    }
 }

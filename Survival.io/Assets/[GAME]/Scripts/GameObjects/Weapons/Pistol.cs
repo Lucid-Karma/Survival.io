@@ -11,25 +11,25 @@ public class Pistol : BaseBulletSpawner
         currentBulletCount = maxBulletCount;
     }
 
-    /*private void OnEnable()
+    private void OnEnable()
     {
         if (!enabled) return;
 
         EventManager.OnAmmoIncrease.AddListener(() =>
         maxBulletCount += 5);
 
-        EventManager.OnSpeedIncrease.AddListener(() => 
+        EventManager.OnSpeedIncrease.AddListener(() =>
         speedTime -= 0.05f);
     }
 
     private void OnDisable()
     {
         EventManager.OnAmmoIncrease.RemoveListener(() =>
-        maxBulletCount += 5);
+        maxBulletCount = maxBulletCount/*maxBulletCount += 5*/);
 
         EventManager.OnSpeedIncrease.RemoveListener(() =>
-        speedTime -= 0.05f);
-    }*/
+        speedTime = speedTime);
+    }
 
     /*public void PistolSpeedIncrease()
     {
