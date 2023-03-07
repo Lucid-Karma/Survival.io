@@ -12,7 +12,9 @@ public enum ExecutingState
     INIDLE,
 
     IDLERELOAD,
-    RUNRELOAD
+    RUNRELOAD,
+
+    DEAD
 }
 
 [RequireComponent(typeof(Rigidbody), typeof(CapsuleCollider))]
@@ -23,6 +25,7 @@ public class PlayerController : MonoBehaviour
     PlayerStates currentState;
     CoinMove coinMoveScript;
 
+    #region FSM
     public OutRunningState outRunningState = new OutRunningState();
     public OutIdleState outIdleState = new OutIdleState();
     public InRunningState inRunningState = new InRunningState();
@@ -31,7 +34,11 @@ public class PlayerController : MonoBehaviour
     public RuningReloadState runningReloadState = new RuningReloadState();
     public IdlingReloadState idlingReloadState = new IdlingReloadState();
 
+    public DeathState deathState = new DeathState();
+
     public ExecutingState executingState;
+    #endregion
+    
 
     [SerializeField] private Rigidbody rigidBody;
     public FixedJoystick joystick;
@@ -92,6 +99,8 @@ public class PlayerController : MonoBehaviour
         rotationGoal = Quaternion.LookRotation(direction);
         transform.rotation = Quaternion.Slerp(transform.rotation, rotationGoal, turnSpeed); // Smooth change rotation*/
 
+        if(PlayerHealthController.instance.isDeath)     executingState = ExecutingState.DEAD;
+        
         currentState.UpdateState(this);
 
         if (joystick.Horizontal != 0 || joystick.Vertical != 0)

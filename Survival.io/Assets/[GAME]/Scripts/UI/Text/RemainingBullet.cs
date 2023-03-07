@@ -17,43 +17,17 @@ public class RemainingBullet : MonoBehaviour
             return bulletCountText;
         }
     }
-
-    // private void OnEnable()
-    // {
-    //     EventManager.OnGunUpdate.AddListener(RefreshBulletText);
-    //     //EventManager.OnFirstGunCall.AddListener(gun);
-    // }
-
-    // private void OnDisable()
-    // {
-    //     EventManager.OnGunUpdate.RemoveListener(RefreshBulletText); 
-    //     //EventManager.OnFirstGunCall.RemoveListener(gun);
-    // }
+    
 
     public int count = 0;
     public int maxCount = 0;
 
-    // void Start()
-    // {
-    //     maxCount = BaseBulletSpawner.maxBulletCount;
-    // }
-
     void Update()
     {
+        if(GameManager.instance.isLevelEnd) return;
+
         maxCount = BaseBulletSpawner.maxBulletCount;
         count = BaseBulletSpawner.currentBulletCount;
         BulletCountText.text = count + "/" + maxCount;
     }
-    // public void RefreshBulletText()
-    // {
-    //     maxCount = BaseBulletSpawner.maxBulletCount;
-    //     count = BaseBulletSpawner.currentBulletCount;
-
-    //     BulletCountText.text = count + "/" + maxCount;
-    // }
-
-    // void gun()
-    // {
-    //     maxCount = Pistol.maxBulletCount;
-    // }
 }

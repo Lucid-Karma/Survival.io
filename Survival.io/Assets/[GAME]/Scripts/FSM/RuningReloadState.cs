@@ -20,6 +20,7 @@ public class RuningReloadState : PlayerStates
             fsm.animator.SetBool("isInIdle", false);
             fsm.animator.SetBool("isIdleReloading", false);
             fsm.animator.SetBool("isRunningReload", true);
+            fsm.animator.SetBool("isDead", false);
         }
         else
             ExitState(fsm);
@@ -43,5 +44,9 @@ public class RuningReloadState : PlayerStates
         {
             fsm.SwitchState(fsm.inRunningState);
         }
+        else if(fsm.executingState == ExecutingState.DEAD)
+        {
+            fsm.SwitchState(fsm.deathState);
+        } 
     }
 }
