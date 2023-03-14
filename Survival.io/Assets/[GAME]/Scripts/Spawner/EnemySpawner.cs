@@ -25,7 +25,7 @@ public class EnemySpawner : MonoBehaviour
             if (value > enemyPrefab.Length - 2) 
             {
                 CreateBoss();
-                Debug.Log("enabled");
+                //Debug.Log("enabled");
                 this.enabled = false;
             }
                 //listEnemyTurnIndex = 2;
@@ -86,7 +86,7 @@ public class EnemySpawner : MonoBehaviour
 
             if (enemyCreateCount >= maxEnemyCount)
             {
-                Debug.Log("num " + listEnemyTurnIndex + " created!!");
+                //Debug.Log("num " + listEnemyTurnIndex + " created!!");
 
                 ListEnemyTurnIndex ++;
 
@@ -106,7 +106,7 @@ public class EnemySpawner : MonoBehaviour
                     runEnemyClone.SetActive(true);
                 }
 
-                Debug.Log("enemy created");
+                //Debug.Log("enemy created");
                 enemyCreateCount += 1;
 
                 // if (pooledObjects[pooledObjects.Count-1].activeInHierarchy)
@@ -139,7 +139,7 @@ public class EnemySpawner : MonoBehaviour
         {
             pooledObjects[pooledObjects.Count-1].transform.position = GetEnemyPosition();
             pooledObjects[pooledObjects.Count-1].SetActive(true);
-            Debug.Log("BOSS CREATED");
+            //Debug.Log("BOSS CREATED");
         }
     }
 

@@ -7,7 +7,12 @@ public class MP5 : BaseBulletSpawner
     public override void Start()
     {
         speedTime = 0.08f;
+        damage = 1;
         maxBulletCount = 50;
         currentBulletCount = maxBulletCount;
+
+        SAmount = 0.02f;    // update
+        BAmount = 5;    //update
+        DAmount = 20;   // update
     }
 }

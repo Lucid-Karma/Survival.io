@@ -4,9 +4,10 @@ using UnityEngine;
 
 public abstract class BaseBulletSpawner : MonoBehaviour
 {
-    public static BaseBulletSpawner instance;
-
+    public float damage;
+    public float DAmount;
     public float speedTime;
+    public float SAmount;
 
     public List<GameObject> pooledObjects = new List<GameObject>();
     public GameObject objectToPool;
@@ -18,12 +19,11 @@ public abstract class BaseBulletSpawner : MonoBehaviour
     protected float timer;
     public static int maxBulletCount;
     public static int currentBulletCount;       // ?????
+    public int BAmount;
     public static bool isReloading = false;
 
     void Awake() 
     {
-        instance = this;
-        
         for (int i = 0; i < amountToPool; i++) 
         {
             GameObject obj = (GameObject)Instantiate(objectToPool);
@@ -108,5 +108,22 @@ public abstract class BaseBulletSpawner : MonoBehaviour
     public Vector3 GetBulletPosition()
     {
         return gameObject.transform.position;
+    }
+
+
+
+    public void SpeedIncrease()
+    {
+        speedTime -= SAmount;
+        Debug.Log("increased");
+    }
+    public void AmmoIncrease()
+    {
+        maxBulletCount += BAmount;
+    }
+    public float DamageIncrease()
+    {
+        damage += DAmount;
+        return damage;
     }
 }
