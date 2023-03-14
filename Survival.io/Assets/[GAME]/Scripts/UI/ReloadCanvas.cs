@@ -29,7 +29,7 @@ public class ReloadCanvas : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (BaseBulletSpawner.isReloading && reloadImage.fillAmount < 1)
+        if (BaseBulletSpawner.isReloading && reloadImage.fillAmount < 1 && PlayerController.instance.OutSide)
         {
             Debug.Log("RELOAD TIME");
             reloadImageObject.SetActive(true);
