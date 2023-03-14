@@ -7,36 +7,12 @@ public class Pistol : BaseBulletSpawner
     public override void Start()
     {
         speedTime = 0.5f;
+        damage = 1;
         maxBulletCount = 15;
         currentBulletCount = maxBulletCount;
+
+        SAmount = 0.05f;
+        BAmount = 5;
+        DAmount = 20;   // update
     }
-
-    private void OnEnable()
-    {
-        if (!enabled) return;
-
-        EventManager.OnAmmoIncrease.AddListener(() =>
-        maxBulletCount += 5);
-
-        EventManager.OnSpeedIncrease.AddListener(() =>
-        speedTime -= 0.05f);
-    }
-
-    private void OnDisable()
-    {
-        EventManager.OnAmmoIncrease.RemoveListener(() =>
-        maxBulletCount = maxBulletCount/*maxBulletCount += 5*/);
-
-        EventManager.OnSpeedIncrease.RemoveListener(() =>
-        speedTime = speedTime);
-    }
-
-    /*public void PistolSpeedIncrease()
-    {
-        speedTime -= 0.05f;
-    }
-    public void PistolAmmoIncrease()
-    {
-        maxBulletCount += 5;
-    }*/
 }

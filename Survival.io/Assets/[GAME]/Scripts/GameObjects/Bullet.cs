@@ -5,16 +5,22 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] private float bulletSpeed;
-    public float damage;
+    private float damage;
     
+    // void Start()
+    // {
+    //     damage = GunController.instance.damage;
+    // }
+
     void FixedUpdate()
     {
         transform.position += transform.forward * bulletSpeed * Time.fixedDeltaTime;
     }
 
     void OnTriggerEnter(Collider other)
-    {
+    {   
         IDamageable damageable = other.GetComponent<IDamageable>();
+        damage = GunController.instance.damage;
 
         if(damageable != null)
         {
@@ -27,14 +33,14 @@ public class Bullet : MonoBehaviour
             gameObject.SetActive(false);
         }
     }
-    private void OnEnable()
-    {
-        EventManager.OnDamageIncrease.AddListener(() =>
-        damage += 0.5f);
-    }
-    private void OnDisable()
-    {
-        EventManager.OnDamageIncrease.RemoveListener(() =>
-        damage = damage);
-    }
+    // private void OnEnable()
+    // {
+    //     EventManager.OnDamageIncrease.AddListener(() =>
+    //     damage += 0.5f);
+    // }
+    // private void OnDisable()
+    // {
+    //     EventManager.OnDamageIncrease.RemoveListener(() =>
+    //     damage = damage);
+    // }
 }

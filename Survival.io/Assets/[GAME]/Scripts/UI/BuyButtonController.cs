@@ -53,20 +53,23 @@ public class BuyButtonController : MonoBehaviour
     {
         BuyButtonMethod();
 
-        EventManager.OnAmmoIncrease.Invoke();
+        //EventManager.OnAmmoIncrease.Invoke();
+        GunController.instance.UpdateAmmo();
     }
 
     public void SpeedButton()
     {
         BuyButtonMethod();
 
-        EventManager.OnSpeedIncrease.Invoke();
+        //EventManager.OnSpeedIncrease.Invoke();
+        GunController.instance.UpdateSpeed();
     }
 
     public void DamageButton()
     {
         BuyButtonMethod();
 
-        EventManager.OnDamageIncrease.Invoke();
+        //EventManager.OnDamageIncrease.Invoke();
+        GunController.instance.UpdateDamage();
     }
 }

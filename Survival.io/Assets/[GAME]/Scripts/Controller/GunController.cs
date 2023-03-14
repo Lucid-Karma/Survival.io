@@ -10,6 +10,9 @@ public class GunController : MonoBehaviour
     private GameObject activeGun;
     private int i = 0;
 
+    public BaseBulletSpawner[] gunRef;
+    public float damage;
+
     void Awake()
     {
         instance = this;
@@ -24,6 +27,8 @@ public class GunController : MonoBehaviour
     {
         activeGun = gunList[0];
         activeGun.SetActive(true);
+
+        damage = gunRef[0].damage;
     }
 
     private void Update()
@@ -80,5 +85,30 @@ public class GunController : MonoBehaviour
     {
         i++;
         activeGun = gunList[i];
+
+        damage = gunRef[i].damage;
     }
+
+    #region Bullet
+
+    public void UpdateSpeed()
+    {
+        gunRef[i].SpeedIncrease();
+        Debug.Log(gunRef[i].name);
+    }
+
+    public void UpdateAmmo()
+    {
+        gunRef[i].AmmoIncrease();
+        Debug.Log(gunRef[i].name);
+    }
+
+    public void UpdateDamage()
+    {
+        damage = gunRef[i].DamageIncrease();
+        Debug.Log(gunRef[i].name);
+    }
+
+    #endregion
+    
 }
